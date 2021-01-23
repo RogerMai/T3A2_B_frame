@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --primary: #103C30;
 }
 
@@ -12,7 +12,24 @@
     cursor: pointer;
     background-color: var(--primary);
     
+} */
+:root {
+    --primary: #fff;
 }
+
+.btn {
+    padding: 3px 10px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* .btn--primary {
+    background-color: var(--primary);
+    color: #242424;
+    border: 1px solid var(--primary);
+} */
 
 .btn:hover {
     padding: 3px 10px;

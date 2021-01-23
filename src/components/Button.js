@@ -6,6 +6,24 @@ const STYLES = ['btn--primary', 'btn--outline'];
 
 const SIZES = ['btn--medium', 'btn--large'];
 
+// export const Button = ({
+//     children, 
+//     type, 
+//     onClick, 
+//     buttonStyle, 
+//     buttonSize
+// }) => {
+//     const checkButtonStyle = STYLES.includes(buttonStyle) 
+//     ? buttonStyle 
+//     : STYLES[0];
+
+//     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
+//     return (
+//         <Link to='admin-login'>
+//             <button className='btn'>Admin Login</button>
+//         </Link>
+//     )
+// }
 export const Button = ({
     children, 
     type, 
@@ -19,27 +37,16 @@ export const Button = ({
 
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
     return (
-        <Link to='admin-login'>
-            <button className='btn'>Admin Login</button>
+        <Link to='/admin-login' className='btn-mobile'>
+            <button 
+                className={'btn ${checkButtonStyle} ${checkButtonSize}'}
+                onClick={onClick}
+                type ={type}
+            >Admin Login
+                {children}
+            </button>
+
+            
         </Link>
     )
-}
-
-export const HomeButton = ({
-    children, 
-    type, 
-    onClick, 
-    buttonStyle, 
-    buttonSize
-}) => {
-    const checkButtonStyle = STYLES.includes(buttonStyle) 
-    ? buttonStyle 
-    : STYLES[0];
-
-    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
-    return (
-        <Link to='admin-login'>
-            <button className='btn'>Admin Login</button>
-        </Link>
-    )
-}
+};

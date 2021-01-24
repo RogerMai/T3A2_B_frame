@@ -1,10 +1,13 @@
 import React from 'react';
+import './About.css';
+import Card from '../Card';
 
-export default function About() {
+function About() {
     return (
-        <dir className='aboutAll'>
-            <h1 className='consulting'>ABOUT</h1>
-            
-        </dir>
+        <div className='aboutAll'>
+            <Card />
+        </div>
     );
 }
+
+export default About;

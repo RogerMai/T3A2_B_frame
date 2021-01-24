@@ -8,10 +8,7 @@ import Home from './components/pages/Home';
 import Services from './components/pages/Services';
 import Booking from './components/pages/Booking';
 import AdminLogin from './components/pages/Admin';
-import Mowing from './components/pages/Mowing';
-import Gardening from './components/pages/Gardening';
-import Landscaping from './components/pages/Landscaping';
-import GutterClearing from './components/pages/GutterClearing';
+
 
 function App() {
   return (
@@ -24,10 +21,7 @@ function App() {
         <Route path='/services' exact component={Services} />
         <Route path='/booking' exact component={Booking} />
         <Route path='/admin' exact component={AdminLogin} />
-        <Route path='/mowing' exact component={Mowing} />
-        <Route path='/gardening' exact component={Gardening} />
-        <Route path='/landscaping' exact component={Landscaping} />
-        <Route path='/gutterclearing' exact component={GutterClearing} />
+    
       </Switch>
     </Router>
   );

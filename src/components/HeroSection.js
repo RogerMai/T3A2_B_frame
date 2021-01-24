@@ -25,10 +25,9 @@ function HeroSection() {
                     buttonStyle='btn--primary'
                     buttonSize='btn--large' 
                 >
-                        MAKE BOOKING 
+                    MAKE BOOKING <i className='far fa-play-circle' /> 
                 </Button>
             </div>
-            
         </div>
     )
 }

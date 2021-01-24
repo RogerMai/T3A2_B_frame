@@ -14,30 +14,33 @@
     
 } */
 :root {
-    --primary: #fff;
+    --primary: #84dbc2;
 }
 
 .btn {
-    padding: 3px 10px;
-    border-radius: 2px;
+    padding: 8px 20px;
+    border-radius: 4px;
     outline: none;
     border: none;
     cursor: pointer;
 }
 
-/* .btn--primary {
+.btn:hover {
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    /* font-size: 18px; */
+    color: #000;
+    cursor: pointer;
+    background-color: var(--primary);
+    
+}
+
+.btn--primary {
     background-color: var(--primary);
     color: #242424;
     border: 1px solid var(--primary);
-} */
-
-.btn:hover {
-    padding: 3px 10px;
-    transition: all 0.3s ease-out;
-    background-color: #38AA89;
-    color: #fff;
-    border-radius: 4px;
-    transform: translate(0, 20%);
 }
 
 .btn-outline {

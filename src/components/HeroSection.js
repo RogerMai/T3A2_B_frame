@@ -1,7 +1,8 @@
 import React from 'react';
 import '../App.css';
-import { Button } from './Button';
+import { ButtonService, ButtonBooking } from './Button';
 import './HeroSection.css';
+import { Link } from 'react-router-dom';
 
 
 function HeroSection() {
@@ -13,20 +14,23 @@ function HeroSection() {
             <p>With over 30 years’ experience in the Australian turf industry, we know our stuff when it comes to lawn care. Now, we’re opening the door to you.
             </p>
             <div className="hero-btns">
-                <Button 
+                
+                <ButtonService 
                     className='btns'
                     buttonStyle='btn--outline'
                     buttonSize='btn--large' 
                 >
                     OUR SERVICES 
-                </Button>
-                <Button 
+                </ButtonService>
+                
+                <ButtonBooking 
                     className='btns'
                     buttonStyle='btn--primary'
                     buttonSize='btn--large' 
                 >
                     MAKE BOOKING <i className='far fa-play-circle' /> 
-                </Button>
+                </ButtonBooking>
+                
             </div>
         </div>
     )

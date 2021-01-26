@@ -1,9 +1,12 @@
 import React from 'react';
+import './Contact.css';
 
 export default function Contact() {
     return (
-        <>
-            <h1 className='consulting'>CONTACT</h1>
-        </>
+        <div className='contactCard'>
+            <div className='contactContainer'>
+                <h1>CONTACT US</h1>
+            </div>
+        </div>
     );
 }

@@ -1,9 +1,14 @@
 import React from 'react';
+import './Booking.css';
 
-export default function Booking() {
+function Booking() {
     return (
-        <>
-            <h1 className='consulting'>BOOKING</h1>
-        </>
+        <div className='card'>
+            <div className='container'>
+                <h1>BOOKING NOW</h1>
+            </div>
+        </div>
     );
 }
+
+export default Booking;

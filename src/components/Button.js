@@ -87,3 +87,19 @@ export const ButtonBooking = ({
         </Link>
     )
 };
+
+// export const Button_1 = () => {
+//     return (
+//         <Link to='services'>
+//             <button className='btn_services'>Our Services</button>
+//         </Link>
+//     )
+// }
+
+// export const Button_2 = () => {
+//     return (
+//         <Link to='booking'>
+//             <button className='btn_booking'>Make Booking <i className='far fa-play-circle' /></button>
+//         </Link>
+//     )
+// }

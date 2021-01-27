@@ -43,17 +43,19 @@ video {
 }
 
 .hero-btns {
-    margin-top: 32px;
+    margin-top: 20px;
 
 }
 
-.hero-btns .btn {
+.hero-btns .b_booking, .b_services {
     margin: 6px;
 }
+
 
 .fa-play-circle {
     margin-left: 4px;
 }
+
 
 @media screen and (max-width: 960px) {
     .hero-container  > h1 {
@@ -61,6 +63,7 @@ video {
         margin-top: -150px;
     }
 }
+
 
 @media screen and (max-width: 768px) {
     .hero-container  > h1 {
@@ -82,7 +85,76 @@ video {
         text-decoration: none;
     }
 
+
+
     .btn {
-        width: 100%
+        width: 100%;
     }
+
+}
+
+
+@media screen and (max-width: 510px) {
+    .hero-container  > h1 {
+        font-size: 25px;
+        margin-top: -90px;
+    }
+
+    .hero-container > p.pTitle {
+        font-size: 17px;
+        
+    }    
+
+    .hero-container > p {
+        font-size: 10px;
+    }
+
+    .btn-mobile {
+        display: block;
+        text-decoration: none;
+    }
+
+    .hero-btns {
+        
+        width: 100%;
+    }
+
+    
+}
+
+.b_services {
+    padding: 15px 55px;
+    border-radius: 4px;
+    outline: none;
+    border: 3px solid #fff;
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.b_services:hover {
+    padding: 18px 58px;
+    border: none;
+    color: #000;
+    background-color: #84dbc2;
+
+}
+
+.b_booking {
+    padding: 18px 40px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: 25px;
+    color: #000;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.b_booking:hover {
+    padding: 15px 37px;
+    border: 3px solid #fff;
+    color: #fff;
+    background-color: #276755;
 }

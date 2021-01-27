@@ -42,43 +42,7 @@ function Navbar() {
 
     window.addEventListener('resize', showButton);
 
-    // return (
-    //     <>
-    //         <nav className='navbar'>
-    //             <div className="navbar-container">
-    //                 <Link to='/' className='navbar-logo'>
-    //                     Larry's Lawncare
-    //                 </Link>
-    //                 <div className='menu-icon' onClick={handleClick}>
-    //                     <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-    //                 </div>
-    //                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-    //                     <li className='nav-item'>
-    //                         <Link to='/about' className='nav-links' onClick={closeMobileMenu}>About</Link>
-    //                     </li>
-    //                     <li className='nav-item'>
-    //                         <Link to='/contact' className='nav-links' onClick={closeMobileMenu}>Contact</Link>
-    //                     </li>
-    //                     <li className='nav-item'
-    //                         onMouseEnter={onMouseEnter}
-    //                         onMouseLeave={onMouseLeave}
-    //                     >
-    //                         <Link to='/services' className='nav-links' onClick={closeMobileMenu}>
-    //                             Services<i className='fas fa-caret-down' /></Link>
-    //                             {dropdown && <Dropdown />}
-    //                     </li>
-    //                     <li className='nav-item'>
-    //                         <Link to='/booking' className='nav-links' onClick={closeMobileMenu}>Booking Now</Link>
-    //                     </li>
-    //                     <li className='nav-item'>
-    //                         <Link to='/admin' className='nav-links-mobile' onClick={closeMobileMenu}>Admin Login</Link>
-    //                     </li>
-    //                 </ul>
-    //                 {button && <Button buttonStyle='btn--outline'>Admin Login</Button>}
-    //             </div>
-    //         </nav>
-    //     </>
-    // )
+    
     return (
         <>
             <nav className="navbar">

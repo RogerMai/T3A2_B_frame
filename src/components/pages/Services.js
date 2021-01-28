@@ -1,9 +1,12 @@
 import React from 'react';
+import './Services.css';
 
 export default function Services() {
     return (
-        <>
-            <h1 className='consulting'>SERVICES</h1>
-        </>
+        <div className='servicesCard'>
+            <div className='servicesContainer'>
+                <h1>Services</h1>
+            </div>
+        </div>
     );
 }

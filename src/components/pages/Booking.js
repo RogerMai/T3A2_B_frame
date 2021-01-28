@@ -1,7 +1,8 @@
 import React from 'react';
 import Form from '../Form.js'
+import './Booking.css';
 
-export default function Booking() {
+function Booking() {
     return (
         <>
             <h1 className='consulting'>BOOKING</h1>
@@ -9,3 +10,5 @@ export default function Booking() {
         </>
     );
 }
+
+export default Booking;

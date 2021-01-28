@@ -141,7 +141,6 @@ class Form extends React.Component {
                 <label htmlFor="services">
                   Services required
                 </label>
-                {console.log(this.state)}
                 <Select 
                     className="u-full-width"
                     onChange={this.handleOptions}

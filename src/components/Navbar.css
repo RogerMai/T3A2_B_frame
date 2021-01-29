@@ -1,23 +1,14 @@
-.navbar {
+
+
+  .navbar {
     background: #276755;
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
   }
   
-  .navbar-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    max-width: 1500px;
-  }
-
   .navbar-logo {
     color: #fff;
     justify-self: start;
@@ -25,27 +16,22 @@
     cursor: pointer;
     text-decoration: none;
     font-size: 2rem;
-    display: flex;
-    align-items: center;
   }
-  
-  .fa-firstdraft {
-    margin-left: 0.5rem;
-    font-size: 1.6rem;
-  }
-  
+
   .nav-menu {
     display: grid;
     grid-template-columns: repeat(5, auto);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
-    width: 60vw;
+    width: 70vw;
     justify-content: end;
     margin-right: 2rem;
   }
   
   .nav-item {
+    display: flex;
+    align-items: center;
     height: 80px;
   }
   
@@ -53,13 +39,10 @@
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    display: flex;
-    align-items: center;
-    height: 100%;
   }
   
   .nav-links:hover {
-    background-color: #103C30;
+    background-color: #84dbc2;
     border-radius: 4px;
     transition: all 0.2s ease-out;
   }
@@ -109,8 +92,7 @@
     }
   
     .nav-links:hover {
-      background-color: #103C30;
-      color:#84dbc2;
+      background-color: #84dbc2;
       border-radius: 0;
     }
   
@@ -139,24 +121,23 @@
     .nav-links-mobile {
       display: block;
       text-align: center;
+      padding: 1.5rem;
       margin: 2rem auto;
       border-radius: 4px;
       width: 80%;
+      background: #276755;
       text-decoration: none;
-      font-size: 1.5rem;
-      background-color: transparent;
       color: #fff;
-      padding: 14px 20px;
-      border: 1px solid #fff;
-      transition: all 0.3s ease-out;
+      font-size: 1.5rem;
     }
   
     .nav-links-mobile:hover {
       background: #fff;
-      color: #103C30;
+      color: #38AA89;
       transition: 250ms;
     }
   
-   
+    button {
+      display: none;
+    }
   }
-

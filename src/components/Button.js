@@ -2,104 +2,10 @@ import React from 'react'
 import './Button.css';
 import { Link } from 'react-router-dom';
 
-const STYLES = ['btn--primary', 'btn--outline'];
-
-const SIZES = ['btn--medium', 'btn--large'];
-
-
-export const Button = ({
-    children, 
-    type, 
-    onClick, 
-    buttonStyle, 
-    buttonSize
-}) => {
-    const checkButtonStyle = STYLES.includes(buttonStyle) 
-    ? buttonStyle 
-    : STYLES[0];
-
-    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
+export function Button() {
     return (
-        <Link to='/admin-login' className='btn-mobile'>
-            <button 
-                className={'btn ${checkButtonStyle} ${checkButtonSize}'}
-                onClick={onClick}
-                type ={type}
-            >
-                {children}
-            </button>
-
-            
+        <Link to='/admin'>
+            <button className='b_admin'>Admin Login</button>
         </Link>
     )
-};
-
-export const ButtonService = ({
-    children, 
-    type, 
-    onClick, 
-    buttonStyle, 
-    buttonSize
-}) => {
-    const checkButtonStyle = STYLES.includes(buttonStyle) 
-    ? buttonStyle 
-    : STYLES[0];
-
-    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
-    return (
-        <Link to='/services' className='btn-mobile'>
-            <button 
-                className={'btn ${checkButtonStyle} ${checkButtonSize}'}
-                onClick={onClick}
-                type ={type}
-            >
-                {children}
-            </button>
-
-            
-        </Link>
-    )
-};
-
-export const ButtonBooking = ({
-    children, 
-    type, 
-    onClick, 
-    buttonStyle, 
-    buttonSize
-}) => {
-    const checkButtonStyle = STYLES.includes(buttonStyle) 
-    ? buttonStyle 
-    : STYLES[0];
-
-    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
-    return (
-        <Link to='/booking' className='btn-mobile'>
-            <button 
-                className={'btn ${checkButtonStyle} ${checkButtonSize}'}
-                onClick={onClick}
-                type ={type}
-            >
-                {children}
-            </button>
-
-            
-        </Link>
-    )
-};
-
-// export const Button_1 = () => {
-//     return (
-//         <Link to='services'>
-//             <button className='btn_services'>Our Services</button>
-//         </Link>
-//     )
-// }
-
-// export const Button_2 = () => {
-//     return (
-//         <Link to='booking'>
-//             <button className='btn_booking'>Make Booking <i className='far fa-play-circle' /></button>
-//         </Link>
-//     )
-// }
+}

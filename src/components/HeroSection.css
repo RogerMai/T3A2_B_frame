@@ -42,12 +42,13 @@ video {
     line-height: 1.5em;
 }
 
-.hero-btns {
-    margin-top: 20px;
+.hero-button {
+    /* display: flex; */
+    margin-top: 32px;
 
 }
 
-.hero-btns .b_booking, .b_services {
+.hero-button .b_booking, .b_services {
     margin: 6px;
 }
 
@@ -62,6 +63,11 @@ video {
         font-size: 70px;
         margin-top: -150px;
     }
+
+    /* .hero-btns {
+        display: flex;
+        flex-direction: row;
+    } */
 }
 
 
@@ -85,16 +91,15 @@ video {
         text-decoration: none;
     }
 
-
-
-    .btn {
+    .hero-button {
+        /* display: flex;
+        flex-direction: row; */
         width: 100%;
     }
-
 }
 
 
-@media screen and (max-width: 510px) {
+/* @media screen and (max-width: 510px) {
     .hero-container  > h1 {
         font-size: 25px;
         margin-top: -90px;
@@ -114,23 +119,26 @@ video {
         text-decoration: none;
     }
 
-    .hero-btns {
+    .hero-button {
+        display: flex;
+        flex-direction: column;
         
-        width: 100%;
     }
 
-    
-}
+   
+} */
 
-.b_services {
+/* .b_services {
+    text-decoration: none;
     padding: 15px 55px;
     border-radius: 4px;
     outline: none;
     border: 3px solid #fff;
-    font-size: 25px;
+    font-size: 20px;
     color: #fff;
     cursor: pointer;
     background-color: transparent;
+    display: flex;
 }
 
 .b_services:hover {
@@ -157,4 +165,4 @@ video {
     border: 3px solid #fff;
     color: #fff;
     background-color: #276755;
-}
+} */

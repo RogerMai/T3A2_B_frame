@@ -6,7 +6,7 @@
 
 }
 
-.home, .services, .contact, .booking, .admin, .about, .details, .mowing, .gardening, .landscaping, .gutterclearing {
+.home, .services, .contact, .booking, .admin, .about, .mowing, .gardening, .landscaping, .gutterclearing {
     display: flex;
     height: 90vh;
     align-items: center;

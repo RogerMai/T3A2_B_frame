@@ -1,5 +1,5 @@
-import './normalize.css'
-import './skeleton.css'
+// import './normalize.css'
+// import './skeleton.css'
 import React, {useState} from "react"
 import Select from 'react-select'
 

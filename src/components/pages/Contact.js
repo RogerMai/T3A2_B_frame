@@ -31,7 +31,7 @@ class Contact extends React.Component {
 
             <h2>Servicing these areas...</h2>
             <div>
-                {name.map(x => <p>{x.name + ","}</p>)}
+                {name.map(suburb => <p>{suburb.name + ","}</p>)}
             </div>
 
             <ButtonBooking 
@@ -41,6 +41,7 @@ class Contact extends React.Component {
             >
                 MAKE A BOOKING <i className='far fa-play-circle' /> 
             </ButtonBooking>
+            <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" /> 
         </>
     );
   }

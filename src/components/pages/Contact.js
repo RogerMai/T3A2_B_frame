@@ -17,7 +17,6 @@ class Contact extends React.Component {
 
   render() {
     const {name} = this.state
-    console.log(name)
 
     return (
         <>
@@ -31,7 +30,7 @@ class Contact extends React.Component {
 
             <h2>Servicing these areas...</h2>
             <div>
-                {name.map(suburb => <p>{suburb.name + ","}</p>)}
+                {name.map(suburb => <p key={suburb.id}>{suburb.name + ","}</p>)}
             </div>
 
             <ButtonBooking 

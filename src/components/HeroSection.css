@@ -57,6 +57,44 @@ video {
     margin-left: 4px;
 }
 
+.b_services {
+    text-decoration: none;
+    padding: 15px 55px;
+    border-radius: 4px;
+    outline: none;
+    border: 3px solid #fff;
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+    background-color: transparent;
+    /* display: flex; */
+}
+
+.b_services:hover {
+    padding: 18px 58px;
+    border: none;
+    color: #000;
+    background-color: #84dbc2;
+
+}
+
+.b_booking {
+    padding: 18px 40px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: 25px;
+    color: #000;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.b_booking:hover {
+    padding: 15px 37px;
+    border: 3px solid #fff;
+    color: #fff;
+    background-color: #276755;
+}
 
 @media screen and (max-width: 960px) {
     .hero-container  > h1 {
@@ -123,53 +161,52 @@ video {
     }
 
     .hero-button {
+        text-decoration: none;
         display: flex;
         flex-direction: column;
-        /* width: 100%; */
         
     }
 
     .hero-button button {
         display: block;
+        text-decoration: none;
     }
    
+    .b_services {
+        padding: 12px 52px;
+        border-radius: 4px;
+        outline: none;
+        border: 3px solid #fff;
+        font-size: 18px;
+        color: #fff;
+        cursor: pointer;
+        background-color: transparent;
+    }
+    
+    .b_services:hover {
+        padding: 12px 45px;
+        border: none;
+        color: #000;
+        background-color: #84dbc2;
+    
+    }
+    
+    .b_booking {
+        padding: 15px 40px;
+        border-radius: 4px;
+        outline: none;
+        border: none;
+        font-size: 18px;
+        color: #000;
+        cursor: pointer;
+        background-color: #fff;
+    }
+    
+    .b_booking:hover {
+        padding: 15px 37px;
+        border: 3px solid #fff;
+        color: #fff;
+        background-color: #276755;
+    }
 }
 
-.b_services {
-    text-decoration: none;
-    padding: 15px 55px;
-    border-radius: 4px;
-    outline: none;
-    border: 3px solid #fff;
-    font-size: 25px;
-    color: #fff;
-    cursor: pointer;
-    background-color: transparent;
-    /* display: flex; */
-}
-
-.b_services:hover {
-    padding: 18px 58px;
-    border: none;
-    color: #000;
-    background-color: #84dbc2;
-
-}
-
-.b_booking {
-    padding: 18px 40px;
-    border-radius: 4px;
-    outline: none;
-    border: none;
-    font-size: 25px;
-    color: #000;
-    cursor: pointer;
-    background-color: #fff;
-}
-
-.b_booking:hover {
-    padding: 15px 37px;
-    border: 3px solid #fff;
-    color: #fff;
-    background-color: #276755;
-}

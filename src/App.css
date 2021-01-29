@@ -6,10 +6,10 @@
 
 }
 
-.home, .services, .contact, .booking, .admin, .about, .mowing, .gardening, .landscaping, .gutterclearing {
+/* .home, .services, .contact, .booking, .admin, .about, .mowing, .gardening, .landscaping, .gutterclearing {
     display: flex;
     height: 90vh;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-}
+} */

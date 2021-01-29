@@ -18,10 +18,11 @@ class Services extends React.Component {
   }
 
     render() {
-        const {services} = this.state
-        const {loading } = this.state
-        
-        if(!loading) {
+        const {services, loading} = this.state
+
+        if(loading) {
+            return <Spinner />
+        } else {
         return (
             <>
                 <div>
@@ -39,10 +40,7 @@ class Services extends React.Component {
                     )
                 }
             </>
-        )} else {
-            return <Spinner />
-        }
-
+        )}
     }
 }
 

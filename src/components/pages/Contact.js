@@ -46,7 +46,9 @@ class Contact extends React.Component {
             >
                 MAKE A BOOKING <i className='far fa-play-circle' /> 
             </ButtonBooking>
-            <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" /> 
+            <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" />
+            src/images/Contact_Page_Image.jpg
+            src/components/pages/Contact.js
         </>
     )};
   }

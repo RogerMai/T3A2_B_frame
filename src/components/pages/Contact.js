@@ -39,16 +39,10 @@ class Contact extends React.Component {
                 {name.map(suburb => <p key={suburb.id}>{suburb.name + ","}</p>)}
             </div>
 
-            <ButtonBooking 
-                className='btns'
-                buttonStyle='btn--primary'
-                buttonSize='btn--large' 
-            >
+
                 MAKE A BOOKING <i className='far fa-play-circle' /> 
-            </ButtonBooking>
+ 
             <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" />
-            src/images/Contact_Page_Image.jpg
-            src/components/pages/Contact.js
         </>
     )};
   }

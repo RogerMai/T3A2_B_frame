@@ -1,13 +1,13 @@
 import React from 'react';
+import Form from '../Form.js'
 import './Booking.css';
 
 function Booking() {
     return (
-        <div className='card'>
-            <div className='container'>
-                <h1>BOOKING NOW</h1>
-            </div>
-        </div>
+        <>
+            <h1 className='consulting'>BOOKING</h1>
+            <Form />
+        </>
     );
 }
 

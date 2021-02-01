@@ -30,12 +30,20 @@ class Services extends React.Component {
                 </div>
                 {services.map(service => 
                     <table key={service.id}>
+                            { service.category_id === 1 ?
                         <tbody>
-                            <tr >
+                            <tr>
+                            <td>{service.service_name}</td>
+                            <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
+                            </tr>
+                        </tbody> : 
+                        <tbody>
+                            <tr>
                             <td>{service.service_name}</td>
                             <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
                             </tr>
                         </tbody>
+                        }
                     </table>
                     )
                 }

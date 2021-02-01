@@ -62,6 +62,7 @@ class Form extends React.Component {
                 <input 
                   className="u-full-width"
                   type="text" 
+
                   name="firstname" 
                   id="firstname"
                   onChange={this.handleChange}

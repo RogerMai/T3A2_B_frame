@@ -2,6 +2,7 @@ import React from 'react';
 import './Contact.css';
 import { ButtonBooking } from '../Button';
 import API from '../../api'
+import Spinner from '../layout/Spinner'
 
 class Contact extends React.Component {
     state = {
@@ -9,16 +10,20 @@ class Contact extends React.Component {
     }
 
   componentDidMount () {
+    this.setState({ loading: true })
+
     fetch(`${API}/suburbs`)
     .then(response => response.json())
-    .then(data => this.setState({name: data}));  
+    .then(data => this.setState({name: data, loading: false}));  
   }
 
 
   render() {
-    const {name} = this.state
-    console.log(name)
+    const {name, loading} = this.state
 
+    if(loading) {
+        return <Spinner />
+    } else {
     return (
         <>
         <h1>Contact Us</h1>
@@ -31,7 +36,7 @@ class Contact extends React.Component {
 
             <h2>Servicing these areas...</h2>
             <div>
-                {name.map(suburb => <p>{suburb.name + ","}</p>)}
+                {name.map(suburb => <p key={suburb.id}>{suburb.name + ","}</p>)}
             </div>
 
             <ButtonBooking 
@@ -43,7 +48,7 @@ class Contact extends React.Component {
             </ButtonBooking>
             <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" /> 
         </>
-    );
+    )};
   }
 }
 

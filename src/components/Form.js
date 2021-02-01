@@ -1,39 +1,81 @@
-import './normalize.css'
-import './skeleton.css'
-import React from "react"
+// import './normalize.css'
+// import './skeleton.css'
+import React, {useState} from "react"
+import Select from 'react-select'
 
+const optionsServices = [
+{value: "lorem", label: "Lorem"},
+{value: "ipsum", label: "ipsum"},
+{value: "dolor", label: "dolor"},
+{value: "sitamet", label: "sit amet"}
+]
 
 class Form extends React.Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             firstname: '',
+             lastname: '',
+             phone: '',
+             email: '',
+             address: '',
+             notes: '',
+             selectedService: null,
+             suburb: 'lorem',
+             postcode: '4000',
+             date: ''
+        }
+    }
 
-  onFormSubmit = (event) => {
+    handleChange = (event) => {
+        let name = event.target.name
+        let value = event.target.value
+        this.setState({[name]: value})
+    }
+
+    handleOptions = selectedService => {
+        this.setState({selectedService})
+        console.log(selectedService)
+    }
+
+    handleSubmit = (event) => {
     event.preventDefault()
-    console.log("yay")
+    let ph = this.state.phone
+    if (!Number(ph)) {
+        alert("Phone must be a number")
+    }
+    console.log(this.state)
   }
 
   render() {
+    const { selectedService } = this.state
     return (
       <div className="Form">
-        <form onSubmit={this.onFormSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className="container">
             <div className="row">
               <div className="one-half column">
-                <label htmlFor="firstName">
+                <label htmlFor="firstname">
                   First Name
                 </label>
                 <input 
                   className="u-full-width"
                   type="text" 
-                  name="firstName" 
-                  id="firstName" 
+
+                  name="firstname" 
+                  id="firstname"
+                  onChange={this.handleChange}
                 />
-                <label htmlFor="lastName">
+                <label htmlFor="lastname">
                   Last Name
                 </label>
                 <input 
                   className="u-full-width"
                   type="text" 
-                  name="lastName"  
-                  id="lastName" 
+                  name="lastname"  
+                  id="lastname" 
+                  onChange={this.handleChange}
                 />
                 <label htmlFor="phone">
                   Phone
@@ -43,6 +85,7 @@ class Form extends React.Component {
                   type="tel" 
                   name="phone"  
                   id="phone" 
+                  onChange={this.handleChange}
                 />
                 <label htmlFor="email">
                   Email
@@ -51,7 +94,8 @@ class Form extends React.Component {
                 className="u-full-width"
                 type="email" 
                 name="email"  
-                id="email" 
+                id="email"
+                  onChange={this.handleChange} 
                 />
                 <label htmlFor="address">
                   Address
@@ -60,7 +104,8 @@ class Form extends React.Component {
                   className="u-full-width"
                   type="text" 
                   name="address"  
-                  id="address" 
+                  id="address"
+                  onChange={this.handleChange} 
                 />
 
                 <div className="row">
@@ -68,7 +113,11 @@ class Form extends React.Component {
                     <label htmlFor="suburb">
                       Suburb
                     </label>
-                    <select className="u-full-width">
+                    <select 
+                        className="u-full-width"
+                        onChange={this.handleChange}
+                        name="suburb"
+                    >
                       <option value="lorem">Lorem</option>
                       <option value="ipsum">ipsum</option>
                     </select>
@@ -77,7 +126,11 @@ class Form extends React.Component {
                     <label htmlFor="postcode">
                       Postcode
                     </label>
-                    <select className="u-full-width">
+                    <select 
+                        className="u-full-width"
+                        onChange={this.handleChange}
+                        name="postcode"
+                    >
                       <option value="4000">4000</option>
                       <option value="4001">4001</option>
                     </select>
@@ -89,10 +142,14 @@ class Form extends React.Component {
                 <label htmlFor="services">
                   Services required
                 </label>
-                <select className="u-full-width">
-                  <option value="lorem">Lorem</option>
-                  <option value="ipsum">ipsum</option>
-                </select>
+                <Select 
+                    className="u-full-width"
+                    onChange={this.handleOptions}
+                    name="selectedService"
+                    options={optionsServices}
+                    placeholder="Select all services required"
+                    isMulti
+                />
                 <label htmlFor="date">
                       Date
                     </label>
@@ -101,12 +158,21 @@ class Form extends React.Component {
                       type="date" 
                       name="date"  
                       id="date" 
+                      onChange={this.handleChange}
                     />
                 <label htmlFor="notes">
                   Notes
                 </label>
-                <textarea className="u-full-width" /> 
-                <input class="button-primary" type="submit" value="Submit" />
+                <textarea 
+                    className="u-full-width" 
+                    name="notes"
+                    onChange={this.handleChange}
+                /> 
+                <input 
+                    className="button-primary" 
+                    type="submit" 
+                    value="Submit" 
+                />
               </div>
             </div>
           </div>
@@ -117,4 +183,3 @@ class Form extends React.Component {
 }
 
 export default Form;
-

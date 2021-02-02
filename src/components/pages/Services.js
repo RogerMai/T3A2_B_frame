@@ -26,7 +26,7 @@ class Services extends React.Component {
         return (
             <>
                 <div>
-                    <h1>Services</h1>
+                    <h1 className="servicesH1">Services</h1>
                 </div>
                 {services.map(service => 
                     <table key={service.id}>

@@ -4,10 +4,18 @@ import './Booking.css';
 
 function Booking() {
     return (
-        <>
-            <h1 className='consulting'>BOOKING</h1>
-            <Form />
-        </>
+        <div className="booking-bg">
+            <div className="bookingCard">
+                <div className="bookingContainer">
+                    <div className="booking-h1">
+                        <h1 className="bookingH1">BOOK A SERVICE</h1>
+                    </div>
+                    <div className="booking-form">
+                        <Form />
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 

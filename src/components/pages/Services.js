@@ -4,6 +4,7 @@ import API from '../../api'
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom"
 import {useEffect, useState} from "react"
 import NewService from '../NewService'
+import EditService from '../EditService'
 
 
 // class Services extends React.Component {
@@ -78,6 +79,7 @@ export default function Services() {
                             <tr>
                             <td>{service.service_name}</td>
                             <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
+                            <td><Link to={`${url}/edit/${service.id}`}>Edit Service</Link></td>
                             </tr>
                         </tbody>
                     </table>
@@ -85,7 +87,12 @@ export default function Services() {
                 }
                 <Link to={`${url}/new`}>Add a new service</Link>
                 <Switch>
-                <Route exact path={`${path}/new`} render={() => <NewService addNewService={addNewService}/>}></Route>
+                <Route path={`${path}/new`}>
+                    <NewService />
+                </Route>
+                <Route path={`${path}/edit/:service_id`}>
+                    <EditService />
+                </Route>
                 </Switch>
         </>
         )

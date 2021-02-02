@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import API from '../api'
 
-export default function NewService(addNewService) {
+export default function NewService() {
     const [servicename, setServicename] = useState("")
     const [price, setPrice] = useState("")
     
@@ -18,12 +18,11 @@ export default function NewService(addNewService) {
                 price: price
             })
         })
-        addNewService(res)
     }
     
     return (
     <>
-    <h1>Create Service</h1>
+    <h1>Add New Service</h1>
         <form onSubmit={onSubmit}>
             <div>
                 <label>Service Name:</label>

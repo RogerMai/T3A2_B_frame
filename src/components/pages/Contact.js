@@ -1,6 +1,6 @@
 import React from 'react';
 import './Contact.css';
-import { ButtonBooking } from '../Button';
+import { Link } from 'react-router-dom';
 import API from '../../api'
 import Spinner from '../layout/Spinner'
 
@@ -38,10 +38,9 @@ class Contact extends React.Component {
             <div>
                 {name.map(suburb => <p key={suburb.id}>{suburb.name + ","}</p>)}
             </div>
-
-
-                MAKE A BOOKING <i className='far fa-play-circle' /> 
- 
+            <Link to='booking'>
+                    <button className='b_booking'>Book Now<i className='far fa-play-circle' /></button>
+            </Link>
             <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" />
         </>
     )};

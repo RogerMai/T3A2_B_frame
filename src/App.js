@@ -21,7 +21,6 @@ function App() {
         <Route path='/booking' exact component={Booking} />
         <Route path='/admin' exact component={AdminLogin} />
         <Route path='/admin/bookings' component={AdminBookings} />
-    
       </Switch>
     </Router>
   );

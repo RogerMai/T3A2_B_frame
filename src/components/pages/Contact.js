@@ -38,15 +38,7 @@ class Contact extends React.Component {
                 {name.map(suburb => <p key={suburb.id}>{suburb.name + ","}</p>)}
             </div>
 
-<<<<<<< HEAD
-
-                MAKE A BOOKING <i className='far fa-play-circle' /> 
- 
-            <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" />
-=======
-           
             <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" /> 
->>>>>>> 87a6185ef3570c9ec3866cf52035f0fa264e5a31
         </>
     )};
   }

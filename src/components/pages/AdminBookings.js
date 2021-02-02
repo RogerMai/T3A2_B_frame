@@ -1,16 +1,16 @@
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import EditBooking from './EditBooking'
 import Record from './Record'
 import {useState, useEffect} from 'react'
-import seedRecords from './seedRecords'
+// import seedRecords from './seedRecords'
 
 
 
 function AdminBookings() {
  const [records, setRecords] = useState([])
  useEffect(() => {
-   let mockRecords = seedRecords()
-   setRecords(mockRecords)
+   fetch('https://larryslawncare.herokuapp.com/services')
+    .then(data => console.log(data))
    }, [])
   return (
     <BrowserRouter>
@@ -24,30 +24,4 @@ function AdminBookings() {
   );
 }
 
-export default AdminBookings;
-import React from 'react'
-
-export default function Bookings() {
-    return (
-        <>
-            <table>
-                <th>
-                    <tr>
-                        <td>Date</td>
-                        <td>Customer</td>
-                        <td>Address</td>
-                        <td>Phone</td>
-                        <td>Email</td>
-                        <td>Service</td>
-                        <td>Notes</td>
-                    </tr>
-                </th>
-                <tbody>
-                    <tr>
-                    
-                    </tr>
-                </tbody>
-            </table>
-        </>
-    );
-}
+export default AdminBookings

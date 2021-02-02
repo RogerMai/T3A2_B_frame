@@ -5,6 +5,7 @@ import {Link, Route} from 'react-router-dom'
 import EditBooking from './EditBooking'
 import {useState} from 'react'
 
+
 const clickDelete = () => {
     confirmAlert({
       title: 'Confirm',

@@ -6,6 +6,7 @@ import {useState, useEffect} from 'react'
 
 
 
+
 function AdminBookings() {
  const [records, setRecords] = useState([])
  useEffect(() => {

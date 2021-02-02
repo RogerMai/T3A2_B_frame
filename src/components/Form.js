@@ -70,6 +70,7 @@ class Form extends React.Component {
     })
   }
 
+
   render() {
     const { selectedService } = this.state
     return (
@@ -141,6 +142,7 @@ class Form extends React.Component {
                       <option key={suburb.id} value={suburb.id}>{suburb.name}</option>
                     ))}
                   </select>
+
               </div>
               <div className="one-half column">
                 <label htmlFor="services">

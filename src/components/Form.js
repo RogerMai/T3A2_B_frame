@@ -1,5 +1,3 @@
-// import './normalize.css'
-// import './skeleton.css'
 import React, {useState} from "react"
 import Select from 'react-select'
 
@@ -51,7 +49,7 @@ class Form extends React.Component {
   render() {
     const { selectedService } = this.state
     return (
-      <div className="Form">
+      <div className="bookingForm">
         <form onSubmit={this.handleSubmit}>
           <div className="container">
             <div className="row">

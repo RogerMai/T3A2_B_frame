@@ -1,9 +1,8 @@
-.adminCard {
+/* .adminCard {
     display: flex;
     width: 100%;
     height: 100vh;
     justify-content: center;
-    /* align-items: center; */
     margin-top: 130px;
 }
 
@@ -12,9 +11,6 @@
     width: 300px;
     height: 80px;
     border-radius: 8px;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* margin-top: 10px; */
     justify-content: center;
     align-items: center;
     box-shadow: 0px 1px 10px 1px gray;
@@ -152,4 +148,4 @@ h1 {
     color: #276755;
     font-weight: 700;
   
-  }
+  } */

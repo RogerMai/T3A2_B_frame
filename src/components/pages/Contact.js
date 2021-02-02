@@ -1,8 +1,7 @@
 import React from 'react';
 import './Contact.css';
-import { ButtonBooking } from '../Button';
-import API from '../../api'
-import Spinner from '../layout/Spinner'
+import API from '../../api';
+import Spinner from '../layout/Spinner';
 
 class Contact extends React.Component {
     state = {
@@ -26,7 +25,7 @@ class Contact extends React.Component {
     } else {
     return (
         <>
-        <h1>Contact Us</h1>
+        <h1 className="contactUs">Contact Us</h1>
             <div>Contact Number: 07 3805 7265</div>
             <div>Email: Larry@larryslawncare.com.au</div>
             <div>
@@ -39,10 +38,15 @@ class Contact extends React.Component {
                 {name.map(suburb => <p key={suburb.id}>{suburb.name + ","}</p>)}
             </div>
 
+<<<<<<< HEAD
 
                 MAKE A BOOKING <i className='far fa-play-circle' /> 
  
             <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" />
+=======
+           
+            <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" /> 
+>>>>>>> 87a6185ef3570c9ec3866cf52035f0fa264e5a31
         </>
     )};
   }

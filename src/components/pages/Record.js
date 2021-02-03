@@ -3,6 +3,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import {Link, Route} from 'react-router-dom'
 import EditBooking from './EditBooking'
+import { useState, useEffect } from 'react'
 
 const clickDelete = () => {
     confirmAlert({
@@ -21,11 +22,8 @@ const clickDelete = () => {
     })
   };
 
-  const clickEdit = () => {
-      alert('edit')
-  }
-
 const Record = () => {
+  // const [data, setData] = useState([])
     let data = [
         {
             id: 1,
@@ -48,6 +46,12 @@ const Record = () => {
         }
     ]
 
+    useEffect(() => {
+      fetch('https://larryslawncare.herokuapp.com/bookings')
+        .then(res => res.json())
+        .then(data => console.log(data))
+  }, [])
+
     return (
         <>
         <table>
@@ -65,6 +69,7 @@ const Record = () => {
         <tbody>
           {data.map(data => (
             <tr key={data.id}>
+                  <Link to="admin/bookings/:id">
                   <td>
                       <p>{data.date}</p>
                   </td>
@@ -86,8 +91,9 @@ const Record = () => {
                   <td>
                       <p>{data.notes}</p>
                   </td>
+                  </Link>
                   <td>
-                      <Link to="/edit">
+                      <Link to="/booking/:id">
                         <button>Edit</button>
                       </Link>
                   </td>
@@ -98,7 +104,7 @@ const Record = () => {
           ))}
         </tbody>
     </table>
-    <Route path="/edit" component={EditBooking}></Route>
+    <Route path="/booking/:id" component={EditBooking}></Route>
     </>
     )
   }

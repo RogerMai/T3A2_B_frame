@@ -1,5 +1,3 @@
-// import './normalize.css'
-// import './skeleton.css'
 import React, {useState} from "react"
 import Select from 'react-select'
 
@@ -51,7 +49,7 @@ class Form extends React.Component {
   render() {
     const { selectedService } = this.state
     return (
-      <div className="Form">
+      <div className="bookingForm">
         <form onSubmit={this.handleSubmit}>
           <div className="container">
             <div className="row">
@@ -107,36 +105,17 @@ class Form extends React.Component {
                   id="address"
                   onChange={this.handleChange} 
                 />
-
-                <div className="row">
-                  <div className="one-half column">
-                    <label htmlFor="suburb">
-                      Suburb
-                    </label>
-                    <select 
-                        className="u-full-width"
-                        onChange={this.handleChange}
-                        name="suburb"
-                    >
-                      <option value="lorem">Lorem</option>
-                      <option value="ipsum">ipsum</option>
-                    </select>
-                  </div>
-                  <div className="one-half column">
-                    <label htmlFor="postcode">
-                      Postcode
-                    </label>
-                    <select 
-                        className="u-full-width"
-                        onChange={this.handleChange}
-                        name="postcode"
-                    >
-                      <option value="4000">4000</option>
-                      <option value="4001">4001</option>
-                    </select>
-                  </div>
-                </div>
-
+                <label htmlFor="suburb">
+                  Suburb
+                </label>
+                <select 
+                    className="u-full-width"
+                    onChange={this.handleChange}
+                    name="suburb"
+                >
+                  <option value="lorem">Lorem</option>
+                  <option value="ipsum">ipsum</option>
+                </select>
               </div>
               <div className="one-half column">
                 <label htmlFor="services">

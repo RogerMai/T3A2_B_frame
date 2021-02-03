@@ -8,6 +8,8 @@ import Services from './components/pages/Services';
 import Booking from './components/pages/Booking';
 import AdminLogin from './components/pages/Admin';
 import AdminBookings from './components/pages/AdminBookings'
+import NewService from './components/NewService'
+import EditService from './components/EditService'
 
 
 function App() {
@@ -17,7 +19,9 @@ function App() {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
-        <Route path='/services' component={Services} />
+        <Route exact path='/services' component={Services} />
+        <Route exact path='/services/new' component={NewService} />
+        <Route exact path='/services/edit/:service_id' component={EditService} />
         <Route path='/booking' exact component={Booking} />
         <Route path='/admin' exact component={AdminLogin} />
         <Route path='/admin/bookings' component={AdminBookings} />

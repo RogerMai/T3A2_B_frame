@@ -10,18 +10,31 @@ import AdminLogin from './components/pages/Admin';
 import AdminBookings from './components/pages/AdminBookings'
 import NewService from './components/NewService'
 import EditService from './components/EditService'
+import DeleteService from './components/DeleteService'
+import {useState, useEffect} from 'react'
+import API from './api'
 
 
 function App() {
+  const [services, setServices] = useState([])
+    
+  useEffect(() => {
+      fetch(`${API}services`)
+      .then(response => response.json())
+      .then(data => setServices(data));
+  }, []) 
+
+
   return (
     <Router>
       <Navbar />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
-        <Route exact path='/services' component={Services} />
-        <Route exact path='/services/new' component={NewService} />
-        <Route exact path='/services/edit/:service_id' component={EditService} />
+        <Route exact path='/services' render={props => <Services {...props} services={services} />} />
+        <Route exact path='/services/new' render={props => <NewService {...props} services={services} />} />
+        <Route exact path='/services/:service_id/edit' render={props => <EditService {...props} services={services} />} />
+        <Route exact path='/services/:service_id/delete' render={props => <DeleteService {...props} services={services} />} />
         <Route path='/booking' exact component={Booking} />
         <Route path='/admin' exact component={AdminLogin} />
         <Route path='/admin/bookings' component={AdminBookings} />

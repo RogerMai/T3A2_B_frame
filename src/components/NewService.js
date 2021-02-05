@@ -1,27 +1,42 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import API from '../api'
 import { Link } from 'react-router-dom'
 
 export default function NewService(props) {
-    const [servicename, setServicename] = useState("")
-    const [price, setPrice] = useState("")
-    const [category, setCategory] = useState("")    
+    const [newService, setNewService] = useState({
+        service_name: "",
+        price: ""
+    })
+    // const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        fetch(`${API}categories`)
+        .then(response => response.json())
+        .then(data => setCategories(data));
+    }, []) 
     
-    const onSubmit = async (event) => {
-        event.preventDefault()
+    const onSubmit = async (e) => {
+        e.preventDefault()
         await fetch(`${API}services`, {
             method: "POST",
+            body: JSON.stringify(newService),
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                service_name: servicename,
-                price: price,
-                category_id: category
-            })
+            }
+        }).then(result => {
+            if (result.status === 201) {
+                props.history.push("/services")
+            } else {
+                alert("All fields must be completed to proceed")
+            }
         })
-        props.history.push("/")
+    }
+
+    const onChange = (e) => {
+        let serviceDetails = e.target.id
+        console.log(serviceDetails)
+        setNewService({ ...newService, [serviceDetails]: e.target.value })
     }
     
     return (
@@ -29,20 +44,23 @@ export default function NewService(props) {
     <h1>Add New Service</h1>
         <form onSubmit={onSubmit}>
             <div>
-                <label>Service Name:</label>
-                <input value={servicename} onChange={event => setServicename(event.target.value)}/>
+                <label htmlFor="service_name">Service Name:</label>
+                <input id="service_name" onChange={onChange} value={(newService.service_name)}/>
             </div>
             <div>
-                <label>Price:</label>
-                <input value={price} onChange={event => setPrice(event.target.value)} />
+                <label htmlFor="price">Price:</label>
+                <input id="price" onChange={onChange} value={(newService.price)}/>
             </div>
             <div>
-                <label>Category:</label>
-                <input value={category} onChange={event => setCategory(event.target.value)} />
+                <select htmlFor="category_name" onChange={onChange}>
+                    {categories.map(cat => (
+                        <option id="category_name" value={cat.category_id} key={cat.id}>{cat.category_name}</option>
+                    ))}
+                </select>
             </div>
             <button>Add New Service</button>
-            <Link to="/services">Back to Services</Link>
         </form>
+        <Link to="/services">Back to Services</Link>
     </>
     )
 }

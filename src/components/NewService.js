@@ -1,24 +1,20 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import API from '../api'
 import { Link } from 'react-router-dom'
 
 export default function NewService(props) {
     const [newService, setNewService] = useState({
         service_name: "",
-        price: ""
+        price: "",
     })
-    // const [categories, setCategories] = useState([])
 
-    useEffect(() => {
-        fetch(`${API}categories`)
-        .then(response => response.json())
-        .then(data => setCategories(data));
-    }, []) 
-    
-    const onSubmit = async (e) => {
+    const onSubmit = (e) => {
+        let response = {...newService}
+        console.log(response)
+
         e.preventDefault()
-        await fetch(`${API}services`, {
+         fetch(`${API}services`, {
             method: "POST",
             body: JSON.stringify(newService),
             headers: {
@@ -27,6 +23,7 @@ export default function NewService(props) {
         }).then(result => {
             if (result.status === 201) {
                 props.history.push("/services")
+                alert("The service has been successfully added")
             } else {
                 alert("All fields must be completed to proceed")
             }
@@ -52,9 +49,9 @@ export default function NewService(props) {
                 <input id="price" onChange={onChange} value={(newService.price)}/>
             </div>
             <div>
-                <select htmlFor="category_name" onChange={onChange}>
-                    {categories.map(cat => (
-                        <option id="category_name" value={cat.category_id} key={cat.id}>{cat.category_name}</option>
+                <select htmlFor="category_id" onChange={onChange}>
+                    {props.categories.map(cat => (
+                        <option id="category_id" value={newService.category_id} key={cat.id}>{cat.category_name}</option>
                     ))}
                 </select>
             </div>

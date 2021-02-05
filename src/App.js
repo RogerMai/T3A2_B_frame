@@ -24,7 +24,14 @@ function App() {
       .then(data => setServices(data));
   }, []) 
 
+  const [categories, setCategories] = useState([])
 
+  useEffect(() => {
+      fetch(`${API}categories`)
+      .then(response => response.json())
+      .then(data => setCategories(data));
+  }, []) 
+  
   return (
     <Router>
       <Navbar />
@@ -32,9 +39,9 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
         <Route exact path='/services' render={props => <Services {...props} services={services} />} />
-        <Route exact path='/services/new' render={props => <NewService {...props} services={services} />} />
-        <Route exact path='/services/:service_id/edit' render={props => <EditService {...props} services={services} />} />
-        <Route exact path='/services/:service_id/delete' render={props => <DeleteService {...props} services={services} />} />
+        <Route exact path='/services/new' render={props => <NewService {...props} services={services} categories={categories} />} />
+        <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} />} />
+        <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} />} />
         <Route path='/booking' exact component={Booking} />
         <Route path='/admin' exact component={AdminLogin} />
         <Route path='/admin/bookings' component={AdminBookings} />

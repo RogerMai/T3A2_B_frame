@@ -7,6 +7,7 @@ export default function NewService(props) {
     const [newService, setNewService] = useState({
         service_name: "",
         price: "",
+        category_id: 11
     })
 
     const onSubmit = (e) => {
@@ -47,13 +48,6 @@ export default function NewService(props) {
             <div>
                 <label htmlFor="price">Price:</label>
                 <input id="price" onChange={onChange} value={(newService.price)}/>
-            </div>
-            <div>
-                <select htmlFor="category_id" onChange={onChange}>
-                    {props.categories.map(cat => (
-                        <option id="category_id" value={newService.category_id} key={cat.id}>{cat.category_name}</option>
-                    ))}
-                </select>
             </div>
             <button>Add New Service</button>
         </form>

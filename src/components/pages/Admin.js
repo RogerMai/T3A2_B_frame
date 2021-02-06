@@ -1,81 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import './Admin.css';
-import LoginForm from '../LoginForm'
+import React, { Component } from 'react';
+import axios from 'axios';
+import Login from '../Login';
 
 
-function Admin() {
-    const adminUser = {
-      username: "admin",
-      password: "admin"
+export default class Home extends Component {
+    constructor(props) {
+        super(props);
+
+        this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
     }
-  
-    const [user,setUser] = useState({name: "", username: ""});
-    const [error, setError] = useState("");
-  
-    const Login = details => {
-      console.log(details);
-  
-      // API call to login - pass email and password (POST request)
-      // Returns token (JWT)
-    // useEffect(() => {
-    //   const token = localStorage.getItem("token")
-    //     if(token){
-    //       fetch(`https://larryslawncare.herokuapp.com/auto_login`, {
-    //         headers: {
-    //           Authorization: `Bearer ${token}`
-    //         }
-    //       })
-    //       .then(resp => resp.json())
-    //       .then(data => {
-    //         setUser(data)
-    //       })
-    //   }
 
-    //   const handleAuthClick = () => {
-    //     const token = localStorage.getItem("token")
-    //       fetch(`https://larryslawncare.herokuapp.com/user_is_autehed`, {
-    //         headers: {
-    //           "Authorization": `Bear ${token}`
-    //         }
-    //       })
-    //       .then(resp => resp.json())
-    //       .then(data => console.log(data))
-    //   }
-    // }, [])
-
-    // const token = localStorage.getItem("token")
-
-    // above 
-
-      if (details.username === adminUser.username && details.password === adminUser.password) {
-        console.log("Logged In")
-        setUser({
-          name: details.name,
-          username: details.username
-        });
-      } else {
-        console.log("Details do not match")
-        setError("Details do not match")
-      }
+    handleSuccessfulAuth(data) {
+        this.props.handleLogin(data);
+        this.props.history.push("/dashboard");
     }
-  
-    const Logout = () => {
-      console.log("Logout");
-        setUser({ name: "", username: ""});
+
+    handleLogoutClick() {
+        axios.delete("http://larryslawncare.herokuapp.com/logout", { withCredentials: true}).then(Response => {
+            this.props.handleLogout();
+        }).catch(error => {
+            console.log("logout error", error);
+        })
     }
-  
-    return (
-      <div className="App">
-        {(user.username !== "") ? (
-          <div className="welcome">
-            <h2>Welcome, <span>{user.name}</span></h2>
-            <button onClick={Logout}>Logout</button>
-          </div>
-        ) : (
-          <LoginForm Login={Login} error={error} />
-        )}
-      </div>
-    );
-  }
-  
-  export default Admin;
+
+    render() {
+        return (
+            <div>
+                <h1>Admin Login</h1>
+                <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
+            </div>
+        );
+    }
+}
+

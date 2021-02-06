@@ -59,57 +59,61 @@ class BookingForm extends React.Component {
                 <Col className="leftCol">
                   <div className="leftpart">
                     <Form.Group controlId="formFirstName">
-                      <label htmlFor="firstname">First Name</label>
-                      <input className="u-full-width" type="text" name="firstname" id="firstname" onChange={this.handleChange} />
+                      <Form.Label htmlFor="firstname">First Name</Form.Label>
+                      <Form.Control className="u-full-width" type="text" name="firstname" id="firstname" onChange={this.handleChange} />
                     </Form.Group>
 
-                    <div className="input_field">
-                      <label htmlFor="lastname">Last Name</label>
-                      <input className="u-full-width" type="text" name="lastname" id="lastname" onChange={this.handleChange} />
-                    </div>
+                    <Form.Group className="input_field">
+                      <Form.Label htmlFor="lastname">Last Name</Form.Label>
+                      <Form.Control className="u-full-width" type="text" name="lastname" id="lastname" onChange={this.handleChange} />
+                    </Form.Group>
 
-                    <div className="input_field">
-                      <label htmlFor="phone">Phone</label>
-                      <input className="u-full-width" type="tel" name="phone" id="phone" onChange={this.handleChange} />
-                    </div>
+                    <Form.Group className="input_field">
+                      <Form.Label htmlFor="phone">Phone</Form.Label>
+                      <Form.Control className="u-full-width" type="tel" name="phone" id="phone" onChange={this.handleChange} />
+                    </Form.Group>
 
-                    <div className="input_field">
-                      <label htmlFor="email">Email</label>
-                      <input className="u-full-width" type="email" name="email" id="email" onChange={this.handleChange} />
-                    </div>
+                    <Form.Group className="input_field">
+                      <Form.Label htmlFor="email">Email</Form.Label>
+                      <Form.Control className="u-full-width" type="email" name="email" id="email" onChange={this.handleChange} />
+                    </Form.Group>
 
-                    <div className="input_field">
-                      <label htmlFor="address">Address</label>
-                      <input className="u-full-width" type="text" name="address" id="address" onChange={this.handleChange} />
-                    </div>
+                    <Form.Group className="input_field">
+                      <Form.Label htmlFor="address">Address</Form.Label>
+                      <Form.Control className="u-full-width" type="text" name="address" id="address" onChange={this.handleChange} />
+                    </Form.Group>
 
-                    <div className="row">
-                      <div className="two-half-column">
-                        <label htmlFor="suburb">Suburb</label>
-                        <select className="suburb-width" onChange={this.handleChange} name="suburb" >
-                          <option value="lorem">Lorem</option>
-                          <option value="ipsum">ipsum</option>
-                        </select>
-                      </div>
-                      <div className="one-half column">
-                        <label htmlFor="postcode">Postcode</label>
-                        <select
-                          className="postcode-width"
-                          onChange={this.handleChange}
-                          name="postcode"
-                        >
-                          <option value="4000">4000</option>
-                          <option value="4001">4001</option>
-                        </select>
-                      </div>
-                    </div>
+                    <Row>
+                      <Col>
+                        <Form.Group className="two-half-column">
+                          <Form.Label htmlFor="suburb">Suburb</Form.Label>
+                          <Form.Control as="select" className="suburb-width" onChange={this.handleChange} name="suburb" >
+                            <option value="lorem">Lorem</option>
+                            <option value="ipsum">ipsum</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      <Col>  
+                        <Form.Group className="one-half column">
+                          <Form.Label htmlFor="postcode">Postcode </Form.Label>
+                          <Form.Control as="select"
+                            className="postcode-width"
+                            onChange={this.handleChange}
+                            name="postcode"
+                          >
+                            <option value="4000">4000</option>
+                            <option value="4001">4001</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                    </Row>
                   </div>
                 </Col>
 
                 <Col className="rightCol">
                   <div className="rightpart">
-                    <div className="input_field2">
-                      <label htmlFor="services">Services required</label>
+                    <Form.Group className="input_field2">
+                      <Form.Label htmlFor="services">Services required</Form.Label>
                       <Select
                         className="service-width"
                         onChange={this.handleOptions}
@@ -117,18 +121,18 @@ class BookingForm extends React.Component {
                         options={optionsServices}
                         placeholder="Select all services required"
                         isMulti />
-                    </div>
+                    </Form.Group>
 
-                    <div className="input_field2">
-                      <label htmlFor="date">Date</label>
-                      <input className="date-width" type="date" name="date" id="date" onChange={this.handleChange} />
-                    </div>
+                    <Form.Group className="input_field2">
+                      <Form.Label htmlFor="date">Date</Form.Label>
+                      <Form.Control className="date-width" type="date" name="date" id="date" onChange={this.handleChange} />
+                    </Form.Group>
 
-                    <div className="input_field2">
-                      <label htmlFor="notes">Notes</label>
+                    <Form.Group className="input_field2">
+                      <Form.Label htmlFor="notes">Notes</Form.Label>
                       <textarea className="u-full-width" name="notes" onChange={this.handleChange} />
-                      <input className="button-primary" type="submit" value="Submit" />
-                    </div>
+                      <Form.Control className="button-primary" type="submit" value="Submit" />
+                    </Form.Group>
                   </div>
                 </Col>
               </Row>

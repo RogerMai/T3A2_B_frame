@@ -25,6 +25,7 @@ class Contact extends React.Component {
     } else {
     return (
         <>
+
         <h1 className="contactUs">Contact Us</h1>
             <div>Contact Number: 07 3805 7265</div>
             <div>Email: Larry@larryslawncare.com.au</div>
@@ -39,7 +40,15 @@ class Contact extends React.Component {
                 <p key={suburb.id}>{suburb.name + ","}</p>)}
             </div>
 
-            <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" />
+            <ButtonBooking 
+                className='btns'
+                buttonStyle='btn--primary'
+                buttonSize='btn--large' 
+            >
+                MAKE A BOOKING <i className='far fa-play-circle' /> 
+            </ButtonBooking>
+
+            <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" /> 
         </>
     )};
   }

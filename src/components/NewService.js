@@ -7,7 +7,7 @@ export default function NewService(props) {
     const [newService, setNewService] = useState({
         service_name: "",
         price: "",
-        category_id: 11
+        category_id: 12
     })
 
     const onSubmit = (e) => {

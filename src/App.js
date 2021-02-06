@@ -16,9 +16,11 @@ import API from './api'
 
 
 function App() {
+  // set the services/categories to be passed down as props
   const [services, setServices] = useState([])
     
   useEffect(() => {
+    // fetch list of services from Rails API
       fetch(`${API}services`)
       .then(response => response.json())
       .then(data => setServices(data));
@@ -27,11 +29,13 @@ function App() {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
+    // fetch list of categories from Rails API
       fetch(`${API}categories`)
       .then(response => response.json())
       .then(data => setCategories(data));
   }, []) 
   
+  // props are destructured in the Router to allow for use in services component
   return (
     <Router>
       <Navbar />

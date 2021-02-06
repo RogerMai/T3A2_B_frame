@@ -61,7 +61,7 @@ class Contact extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
-                                    <Card className="rightpart" >
+                                    <Card className="contactrightpart" >
                                         <Card.Img src="images/Contact_Page_Image.jpg" alt="Contact Us" />
                                         <Card.Body className="contactBButton">
                                             <Link to='booking'>

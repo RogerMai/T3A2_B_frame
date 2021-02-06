@@ -25,4 +25,6 @@ function AdminBookings() {
   );
 }
 
-export default AdminBookings
+
+export default AdminBookings;
+

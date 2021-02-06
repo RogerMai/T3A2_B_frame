@@ -8,20 +8,47 @@ import Services from './components/pages/Services';
 import Booking from './components/pages/Booking';
 import AdminLogin from './components/pages/Admin';
 import AdminBookings from './components/pages/AdminBookings'
+import NewService from './components/NewService'
+import EditService from './components/EditService'
+import DeleteService from './components/DeleteService'
+import {useState, useEffect} from 'react'
+import API from './api'
 
 
 function App() {
+  // set the services/categories to be passed down as props
+  const [services, setServices] = useState([])
+    
+  useEffect(() => {
+    // fetch list of services from Rails API
+      fetch(`${API}services`)
+      .then(response => response.json())
+      .then(data => setServices(data));
+  }, []) 
+
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    // fetch list of categories from Rails API
+      fetch(`${API}categories`)
+      .then(response => response.json())
+      .then(data => setCategories(data));
+  }, []) 
+  
+  // props are destructured in the Router to allow for use in services component
   return (
     <Router>
       <Navbar />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
-        <Route path='/services' exact component={Services} />
+        <Route exact path='/services' render={props => <Services {...props} services={services} />} />
+        <Route exact path='/services/new' render={props => <NewService {...props} services={services} categories={categories} />} />
+        <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} />} />
+        <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} />} />
         <Route path='/booking' exact component={Booking} />
         <Route path='/admin' exact component={AdminLogin} />
         <Route path='/admin/bookings' component={AdminBookings} />
-    
       </Switch>
     </Router>
   );

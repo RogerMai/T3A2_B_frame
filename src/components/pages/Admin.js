@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Login from '../Login';
+import './Admin.css';
 
 export default class AdminLogin extends Component {
     constructor(props) {
@@ -24,9 +25,17 @@ export default class AdminLogin extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Admin Login</h1>
-                <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
+            <div className="admin-bg">
+                <div className="adminCard">
+                    <div className="adminContainer">
+                        <div className="admin-h1">
+                            <h1>Admin Login</h1>
+                        </div>
+                        <div className="adminForm">
+                            <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
+                        </div>
+                    </div>
+                </div>        
             </div>
         );
     }

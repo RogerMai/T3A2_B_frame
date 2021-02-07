@@ -3,7 +3,7 @@ import './Contact.css';
 import API from '../../api';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
-import { Form, Col, Container, Row, Card, Button } from 'react-bootstrap';
+import { Form, Col, Container, Row, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Button } from 'bootstrap';
 
@@ -34,44 +34,58 @@ class Contact extends React.Component {
                     <Container>
                         <Form>
                             <Row>
-                                <Col>
-                                    <Card className="uppart">
-                                        <Card.Header className="contact-h1">
-                                            <h1 className="contactUs">Contact Us</h1>
-                                        </Card.Header>
-                                        <Card.Body className="contactList">
-                                            <ul className="list-group">
-                                                <li className="list-group-item">Contact Number: 07 3805 7265</li>
-                                                <li className="list-group-item">Email: Larry@larryslawncare.com.au</li>
+                                <Col md>
+                                    <div className="contactleftpart">
+                                        <Card className="uppart">
+                                        
+                                            <Card.Header className="contact-h1">
+                                                <h1 className="contactUs">Contact Us</h1>
+                                            </Card.Header>
+                                            <Col className="contactCol">
+                                                
+                                                <div >Contact Number: 07 3805 7265</div>
+                                                <div >Email: Larry@larryslawncare.com.au</div>        
+                                                <Row className="IconList">
+                                                    <div className="socialIcon">
+                                                        <a href="https://www.facebook.com/" target="_blank" className="fab fa-facebook-square fa-3x"> </a>
+                                                    </div>
+                                                    <div className="socialIcon">
+                                                        <a href="https://www.instagram.com/?hl=en" target="_blank" className="fab fa-instagram-square fa-3x"> </a>
+                                                    </div>
+                                                </Row>
+                                            </Col>
+                                        </Card>
+                                        
+                                        <Card className="downpart">
+                                            <Card.Header className="contact-h1">
+                                                <h3 className="service-area">Servicing these areas...</h3>
+                                            </Card.Header>
+                                            <ul className="areaList">
+                                                {name.map(suburb => <li key = {suburb.id}>{suburb.name + ","}</li>)}
                                             </ul>
-                                        </Card.Body>
-                                        <Card.Body className="contactIcon">
-                                            <a href="https://www.facebook.com/" target="_blank" className="fab fa-facebook-square fa-3x"> </a>
-                                            <a href="https://www.instagram.com/?hl=en" target="_blank" className="fab fa-instagram-square fa-3x"> </a>
-                                        </Card.Body>
-                                    </Card>
-                                    
-                                    <Card className="downpart">
-                                        <Card.Header className="contact-h1">
-                                            <h3 className="service-area">Servicing these areas...</h3>
-                                        </Card.Header>
-                                        <ul>
-                                            {name.map(suburb => <li key = {suburb.id}>{suburb.name + ","}</li>)}
-                                        {/* <Card.Text> */}
-                                            {/* {name.map(suburb => <p key={suburb.id}>{suburb.name + ","}</p>)} */}
-                                        {/* </Card.Text> */}
-                                        </ul>
-                                    </Card>
+                                            
+                                        </Card>
+                                    </div>
                                 </Col>
-                                <Col>
-                                    <Card className="contactrightpart" >
-                                        <Card.Img src="images/Contact_Page_Image.jpg" alt="Contact Us" />
-                                        <Card.Body className="contactBButton">
-                                            <Link to='booking'>
-                                                <button id='c_booking'>Booking Now<i className='far fa-play-circle' /></button>
-                                            </Link>
-                                        </Card.Body>
-                                    </Card>
+                                <Col md>
+                                    <div className="rightpart">
+                                        <Card className="contactrightUp" >
+                                            <div>
+                                                <Card.Img src="images/Contact_Page_Image3.jpg" alt="Contact Us" />
+                                            </div>
+                                        
+                                        </Card>
+                                        
+                                        
+                                        {/* <Card className="contactrightDown"> */}
+                                            {/* <div className="rightdownpart">
+                                                <Link to='booking'>
+                                                    <button id='c_booking'>Booking Now<i className='far fa-play-circle' /></button>
+                                                </Link>
+                                            </div> */}
+                                        {/* </Card> */}
+                                    </div>
+
                                 </Col>
                             </Row>
                         </Form>

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, Col, Container, Row, Card, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import API from '../api';
 
 export default class Login extends Component {
     constructor(props) {

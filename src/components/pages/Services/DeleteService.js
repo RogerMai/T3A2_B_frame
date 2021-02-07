@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import API from '../api'
+import API from '../../../api'
 
 export default function DeleteService(props) {
 
+    // setting the initial state of the service to blank - setServiceInfo called in useEffect upon mounting
     const [serviceInfo, setServiceInfo] = useState({
         service_name: "",
         price: ""

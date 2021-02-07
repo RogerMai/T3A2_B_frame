@@ -1,3 +1,23 @@
+# Notes about this application:
+
+### Repository for planning tools
+https://github.com/Leanne2603/T3A2_Full_Stack-App_Part-A
+
+### Repository for front end application 
+https://github.com/Leanne2603/T3A2_B_frame/tree/main/src
+
+### Deployed Frontend Application URL using Netlify
+https://larryslawncare.netlify.app/
+
+### Deployed Backend Application URL using Heroku
+https://larryslawncare.herokuapp.com/
+
+### Link to Trello Board
+https://trello.com/b/uraS52xC/t3a2-react-app
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

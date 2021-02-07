@@ -2,15 +2,15 @@ import React from 'react'
 import './App.css';
 import Navbar from './components/Navbar'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Contact from './components/pages/Contact';
+import Contact from './components/pages/Contact/Contact';
 import Home from './components/pages/Home';
-import Services from './components/pages/Services';
+import Services from './components/pages/Services/Services';
 import Booking from './components/pages/Booking';
 import AdminLogin from './components/pages/Admin';
 import AdminBookings from './components/pages/AdminBookings'
-import NewService from './components/NewService'
-import EditService from './components/EditService'
-import DeleteService from './components/DeleteService'
+import NewService from './components/pages/Services/NewService'
+import EditService from './components/pages/Services/EditService'
+import DeleteService from './components/pages/Services/DeleteService'
 import {useState, useEffect} from 'react'
 import API from './api'
 

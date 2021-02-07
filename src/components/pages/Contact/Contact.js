@@ -1,7 +1,7 @@
 import React from 'react';
 import './Contact.css';
-import API from '../../api'
-import Spinner from '../layout/Spinner'
+import API from '../../../api'
+import Spinner from '../../layout/Spinner'
 
 class Contact extends React.Component {
     state = {
@@ -39,6 +39,8 @@ class Contact extends React.Component {
                 {name.map(suburb => 
                 <p key={suburb.id}>{suburb.name + ","}</p>)}
             </div>
+
+
 
             <img src="./images/Contact_Page_Image.jpg" alt="Contact Us" /> 
         </>

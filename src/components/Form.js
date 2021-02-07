@@ -1,14 +1,12 @@
-import React, {useState} from "react"
+// import './normalize.css'
+// import './skeleton.css'
+import React, {useState, useEffect} from "react"
 import Select from 'react-select'
 
-const optionsServices = [
-{value: "lorem", label: "Lorem"},
-{value: "ipsum", label: "ipsum"},
-{value: "dolor", label: "dolor"},
-{value: "sitamet", label: "sit amet"}
-]
+
 
 class Form extends React.Component {
+  
     constructor(props) {
         super(props)
     
@@ -20,7 +18,9 @@ class Form extends React.Component {
              address: '',
              notes: '',
              selectedService: null,
-             suburb: 'lorem',
+             suburb: '',
+             suburbs: [],
+             services: [],
              postcode: '4000',
              date: ''
         }
@@ -45,11 +45,36 @@ class Form extends React.Component {
     }
     console.log(this.state)
   }
+  
+  componentDidMount() {
+    fetch('https://larryslawncare.herokuapp.com/suburbs')
+    .then(data => data.json())
+    .then(result => this.setState({suburbs: result}))
+  }
+
+  componentDidMount() {
+    fetch('https://larryslawncare.herokuapp.com/services')
+    .then(data => data.json())
+    .then(result => {
+      // recreating the services list array to work with the multi select package
+      let newResultList = result.slice()
+      let array = []
+      newResultList.forEach(element => {
+        console.log(element)
+        let obj = {}
+        obj.label = element.service_name
+        obj.value = element.id
+        array.push(obj)
+      })
+      this.setState({services: array})
+    })
+  }
+
 
   render() {
     const { selectedService } = this.state
     return (
-      <div className="bookingForm">
+      <div className="Form">
         <form onSubmit={this.handleSubmit}>
           <div className="container">
             <div className="row">
@@ -105,35 +130,18 @@ class Form extends React.Component {
                   id="address"
                   onChange={this.handleChange} 
                 />
-
-                <div className="row">
-                  <div className="one-half column">
-                    <label htmlFor="suburb">
-                      Suburb
-                    </label>
-                    <select 
-                        className="u-full-width"
-                        onChange={this.handleChange}
-                        name="suburb"
-                    >
-                      <option value="lorem">Lorem</option>
-                      <option value="ipsum">ipsum</option>
-                    </select>
-                  </div>
-                  <div className="one-half column">
-                    <label htmlFor="postcode">
-                      Postcode
-                    </label>
-                    <select 
-                        className="u-full-width"
-                        onChange={this.handleChange}
-                        name="postcode"
-                    >
-                      <option value="4000">4000</option>
-                      <option value="4001">4001</option>
-                    </select>
-                  </div>
-                </div>
+                  <label htmlFor="suburb">
+                    Suburb
+                  </label>
+                  <select 
+                      className="u-full-width"
+                      onChange={this.handleChange}
+                      name="suburb"
+                  >
+                    {this.state.suburbs.map(suburb => (
+                      <option key={suburb.id} value={suburb.id}>{suburb.name}</option>
+                    ))}
+                  </select>
 
               </div>
               <div className="one-half column">
@@ -144,7 +152,7 @@ class Form extends React.Component {
                     className="u-full-width"
                     onChange={this.handleOptions}
                     name="selectedService"
-                    options={optionsServices}
+                    options={this.state.services}
                     placeholder="Select all services required"
                     isMulti
                 />

@@ -25,11 +25,11 @@ export default function Services(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.services.map((service) => (
+                    {props.services.map((service, index) => (
                         <tr key={service.id}>
                             <td>{service.service_name}</td>
                             <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
-                            <td><Link to={`services/${service.id}/edit`}>Edit Service </Link></td>
+                            <td><Link to={`services/${index}/edit`}>Edit Service </Link></td>
                             <td><Link to={`services/${service.id}/delete`}> Delete Service</Link></td>
                         </tr>
                     ))}

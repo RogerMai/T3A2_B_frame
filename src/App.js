@@ -26,14 +26,6 @@ function App() {
       .then(data => setServices(data));
   }, []) 
 
-  const [categories, setCategories] = useState([])
-
-  useEffect(() => {
-    // fetch list of categories from Rails API
-      fetch(`${API}categories`)
-      .then(response => response.json())
-      .then(data => setCategories(data));
-  }, []) 
   
   // props are destructured in the Router to allow for use in services component
   return (
@@ -43,7 +35,7 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
         <Route exact path='/services' render={props => <Services {...props} services={services} />} />
-        <Route exact path='/services/new' render={props => <NewService {...props} services={services} categories={categories} />} />
+        <Route exact path='/services/new' render={props => <NewService {...props} services={services} />} />
         <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} />} />
         <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} />} />
         <Route path='/booking' exact component={Booking} />

@@ -5,15 +5,14 @@ import API from '../api'
 
 export default function EditService(props) {
     // console.log(props)
-    
     const [formInfo, setFormInfo] = useState({
         service_name: "",
         price: ""
     })
     
     useEffect(() => {
-        let service = props.services
-        console.log(service) // checks to see that data is being returned upon mounting - confirmed ok
+        let service = props.services[props.match.params.id]
+        console.log(service) // checks to see that data is being returned upon mounting - Object including service details returned
         setFormInfo(service) // sets the data for the form to allow for editing
     }, [])
 
@@ -23,7 +22,7 @@ export default function EditService(props) {
 
         // fetches the API for Rails, formats data into JSON to post to database with checks on result status. Redirects back to the Services page once successfully completed.
         e.preventDefault()
-            fetch(`${API}services/`, {
+            fetch(`${API}services/` + formInfo.id, {
             method: "PUT",
             body: JSON.stringify(formInfo),
             headers: {
@@ -48,16 +47,17 @@ export default function EditService(props) {
     return (
         <>
         <h1>Edit Service</h1>
+        
         <form onSubmit={onSubmit}>
             <div>
                 <label htmlFor="service_name">Service Name:</label>
-                <input id="service_name" onChange={onChange} value={props.service_name} />
+                <input onChange={onChange} id="service_name" name="service_name"  value={formInfo.service_name} />
             </div>
             <div>
                 <label htmlFor="price">Price:</label>
-                <input id="price" onChange={onChange} value={props.price} />
+                <input onChange={onChange} id="price" name="price"  value={formInfo.price} /> 
             </div>
-            <button>Update Service</button>
+            <input type="submit" onChange={onChange} value={props.id} />
         </form>
         <Link to="/services">Back to Services</Link>
         </>

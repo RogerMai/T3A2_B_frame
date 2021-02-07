@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Services.css';
 import API from '../../api'
 import Spinner from '../layout/Spinner'
+import { Form, Col, Container, Row } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Services extends React.Component {
     state = {
@@ -24,30 +27,38 @@ class Services extends React.Component {
             return <Spinner />
         } else {
         return (
-            <>
-                <div>
-                    <h1 className="servicesH1">Services</h1>
-                </div>
-                {services.map(service => 
-                    <table key={service.id}>
-                            { service.category_id === 1 ?
-                        <tbody>
-                            <tr>
-                            <td>{service.service_name}</td>
-                            <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
-                            </tr>
-                        </tbody> : 
-                        <tbody>
-                            <tr>
-                            <td>{service.service_name}</td>
-                            <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
-                            </tr>
-                        </tbody>
+            <div className="service-bg">
+                <div className="serviceCard">
+                    <div className="serviceContainer">
+                        <div className="service-h1">
+                            <h1 className="servicesH1">Services</h1>
+                        </div>
+                        {services.map(service => 
+                            <table key={service.id}>
+                                    { service.category_id === 1 ?
+                                <tbody>
+                                    <tr>
+                                    <td>{service.service_name}</td>
+                                    <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
+                                    </tr>
+                                </tbody> : 
+                                <tbody>
+                                    <tr>
+                                    <td>{service.service_name}</td>
+                                    <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
+                                    </tr>
+                                </tbody>
+                                }
+                            </table>
+                            )
                         }
-                    </table>
-                    )
-                }
-            </>
+                        <button>haha!!</button>
+                        <Link to='services'>
+                            <button className='b_services'>Our Services</button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
         )}
     }
 }

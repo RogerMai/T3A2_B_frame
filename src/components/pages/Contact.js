@@ -55,9 +55,12 @@ class Contact extends React.Component {
                                         <Card.Header className="contact-h1">
                                             <h3 className="service-area">Servicing these areas...</h3>
                                         </Card.Header>
-                                        <Card.Text>
-                                            {name.map(suburb => <p key={suburb.id}>{suburb.name + ","}</p>)}
-                                        </Card.Text>
+                                        <ul>
+                                            {name.map(suburb => <li key = {suburb.id}>{suburb.name + ","}</li>)}
+                                        {/* <Card.Text> */}
+                                            {/* {name.map(suburb => <p key={suburb.id}>{suburb.name + ","}</p>)} */}
+                                        {/* </Card.Text> */}
+                                        </ul>
                                     </Card>
                                 </Col>
                                 <Col>

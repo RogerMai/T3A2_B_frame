@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
+
+import API from '../api';
 
 export default class Login extends Component {
     constructor(props) {
@@ -24,21 +26,18 @@ export default class Login extends Component {
     handleSubmit(event) {
         const { username, password, } = this.state;
 
-
         axios
         // post("http://localhost:4000/sessions"
             .post("http://larryslawncare.herokuapp.com/sign_in",
+            // .post(`${API}sign_in`,
                 {
-                    user: {
-                        username: username,
-                        password: password,
-
-                    }
+                    username: username,
+                    password: password,
                 },
-                { withCredentials: true }
+                // { withCredentials: true }
             )
             .then(response => {
-                if (response.data.logged_in) {
+                if (response.data.username && response.data.jwt) {
                     this.props.handleSuccessfulAuth(response.data);
                 }
             })

@@ -9,11 +9,7 @@ export default class Test extends Component {
     }
 
     handleLogoutClick() {
-        axios.delete("http://larryslawncare.herokuapp.com/logout", { withCredentials: true }).then(Response => {
-            this.props.history.push("/");
-        }).catch(error => {
-            console.log("logout error", error);
-        })
+      window.location.href = "/";
     }
 
     render() {
@@ -21,7 +17,7 @@ export default class Test extends Component {
             <div>
                 <h1>Test</h1>
 
-                <button onClick={() => this.handleLogoutClick()}>Logout</button>
+                {this.props.loggedInStatus === "LOGGED_IN" && <button onClick={this.handleLogoutClick}>Log out!!</button>}
 
             </div>
         );

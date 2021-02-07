@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Login from '../Login';
 
-
-export default class Home extends Component {
+export default class AdminLogin extends Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +12,6 @@ export default class Home extends Component {
 
     handleSuccessfulAuth(data) {
         this.props.handleLogin(data);
-        this.props.history.push("/dashboard");
     }
 
     handleLogoutClick() {

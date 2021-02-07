@@ -11,6 +11,8 @@ import AdminBookings from './components/pages/AdminBookings'
 import axios from 'axios';
 import DashBoard from './components/pages/DashBoard'
 
+import { Redirect } from "react-router-dom";
+
 
 export default class App extends Component {
   constructor() {
@@ -26,24 +28,9 @@ export default class App extends Component {
   }
 
   checkLoginStatus() {
-    axios.get("http://larryslawncare.herokuapp.com/sign_in", { withCredentials: true })
-      .then(response => {
-        if (response.data.logged_in && this.state.loggedInStatus === "Not_Logged_In") {
-          this.setState({
-            loggedInStatus: "LOGGED_IN",
-            user: response.data.user
-          })
-        } else if (!response.data.logged_in && this.state.loggedInStatus === "Logged_In") {
-          this.setState({
-            loggedInStatus: "Not_Logged_In",
-            user: {}
-          })
-        }
-      })
-      .catch(error => {
-        console.log("check login error", error);
-      })
+    console.log("Hello!!")
   }
+  
 
   componentDidMount() {
     this.checkLoginStatus();
@@ -59,20 +46,32 @@ export default class App extends Component {
   handleLogin(data) {
     this.setState({
       loggedInStatus: "LOGGED_IN",
-      user: data
-    })
+      user: data.username
+    });
   }
 
   render() {
     return (
       <Router>
         <Navbar />
+      
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/contact' exact component={Contact} />
           <Route path='/services' exact component={Services} />
           <Route path='/booking' exact component={Booking} />
-          <Route path='/admin' exact component={AdminLogin} />
+          {/* <Route path='/admin' exact component={AdminLogin} /> */}
+          <Route
+            exact
+            path='/admin'
+            render={
+              (props) => {
+                return this.state.loggedInStatus === "NOT_LOGGED_IN"
+                  ? <AdminLogin handleLogin={this.handleLogin} handleLogout={this.handleLogout} />
+                  : <Redirect to="/dashboard" />
+              }
+            }
+          />
           <Route path='/admin/bookings' component={AdminBookings} />
           <Route exact path={"/"}
             render={props => (

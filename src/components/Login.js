@@ -27,18 +27,21 @@ export default class Login extends Component {
         const { username, password, } = this.state;
 
         axios
-        // post("http://localhost:4000/sessions"
+        
             .post("http://larryslawncare.herokuapp.com/sign_in",
             // .post(`${API}sign_in`,
                 {
                     username: username,
                     password: password,
                 },
-                // { withCredentials: true }
+               
             )
             .then(response => {
+                
                 if (response.data.username && response.data.jwt) {
+                
                     this.props.handleSuccessfulAuth(response.data);
+                    
                 }
             })
             .catch(error => {

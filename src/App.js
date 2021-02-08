@@ -44,7 +44,7 @@ function App() {
         <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} setServices={setServices} />} />
         <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} setServices={setServices} />} />
         <Route path='/booking' exact component={Booking} />
-        <Route path='/admin' exact component={AdminLogin} />
+        {/* <Route path='/admin' exact component={AdminLogin} /> */}
         <Route path='/admin/bookings' component={AdminBookings} />
         <Route exact path={"/"}
           render={props => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from '../Form.js'
+import BookingForm from '../Form.js'
 import './Booking.css';
 
 function Booking() {
@@ -12,7 +12,7 @@ function Booking() {
                         <h1 className="bookingH1">BOOK A SERVICE</h1>
                     </div>
                     <div className="booking-form">
-                        <Form />
+                        <BookingForm />
                     </div>
                 </div>
             </div>

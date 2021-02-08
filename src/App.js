@@ -12,7 +12,7 @@ import NewService from './components/pages/Services/NewService'
 import EditService from './components/pages/Services/EditService'
 import DeleteService from './components/pages/Services/DeleteService'
 import {useState, useEffect} from 'react'
-import API from './api'
+import API from './components/config/api'
 
 
 function App() {

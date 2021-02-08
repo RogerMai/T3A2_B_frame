@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import API from '../../../api'
+import API from '../../config/api'
 
 export default function EditService({setServices, services, match, history, id }) {
     // console.log(props)

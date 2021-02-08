@@ -19,59 +19,59 @@ import { Redirect } from "react-router-dom";
 function App() {
   // set the services/categories to be passed down as props
   const [services, setServices] = useState([])
-  const [loggedInStatus, setLoggedInStatus] = useState("Not_Logged_In");
+  const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
 
   const handleLogin = (data) => {
-      setLoggedInStatus("LOGGED_IN")
+    setLoggedInStatus("LOGGED_IN")
   }
 
   useEffect(() => {
-      // fetch list of services from Rails API
-      fetch(`${API}services`)
-          .then(response => response.json())
-          .then(data => setServices(data));
+    // fetch list of services from Rails API
+    fetch(`${API}services`)
+      .then(response => response.json())
+      .then(data => setServices(data));
   }, [])
 
   // props are destructured in the Router to allow for use in services component
   return (
-      <Router>
-          <Navbar />
-          <Switch>
-              <Route path='/' exact component={Home} />
-              <Route path='/contact' exact component={Contact} />
-              <Route exact path='/services' render={props => <Services {...props} services={services} />} />
-              <Route exact path='/services/new' render={props => <NewService {...props} services={services} />} />
-              <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} />} />
-              <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} />} />
-              <Route path='/booking' exact component={Booking} />
-              <Route path='/admin' exact component={AdminLogin} />
-              <Route path='/admin/bookings' component={AdminBookings} />
-              <Route exact path={"/"}
-                  render={props => (
-                      <Home {...props}
-                          handleLogin={handleLogin}
-                          handleLogout={handleLogout}
-                          loggedInStatus={loggedInStatus} />
-                  )}
-              />
-              <Route exact path={"/dashboard"}
-                  render={props => (
-                      <DashBoard {...props} loggedInStatus={loggedInStatus} />
-                  )}
-              />
-              <Route
-                  exact
-                  path='/admin'
-                  render={
-                      (props) => {
-                          return loggedInStatus === "NOT_LOGGED_IN"
-                              ? <AdminLogin handleLogin={handleLogin} handleLogout={handleLogout} />
-                              : <Redirect to="/dashboard" />
-                      }
-                  }
-              />
-          </Switch>
-      </Router>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/contact' exact component={Contact} />
+        <Route exact path='/services' render={props => <Services {...props} services={services} />} />
+        <Route exact path='/services/new' render={props => <NewService {...props} services={services} />} />
+        <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} />} />
+        <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} />} />
+        <Route path='/booking' exact component={Booking} />
+        <Route path='/admin' exact component={AdminLogin} />
+        <Route path='/admin/bookings' component={AdminBookings} />
+        <Route exact path={"/"}
+          render={props => (
+            <Home {...props}
+              handleLogin={handleLogin}
+              // handleLogout={handleLogout}
+              loggedInStatus={loggedInStatus} />
+          )}
+        />
+        <Route exact path={"/dashboard"}
+          render={props => (
+            <DashBoard {...props} loggedInStatus={loggedInStatus} />
+          )}
+        />
+        <Route
+          exact
+          path='/admin'
+          render={
+            (props) => {
+              return loggedInStatus === "NOT_LOGGED_IN"
+                ? <AdminLogin handleLogin={handleLogin} />
+                : <Redirect to="/dashboard" />
+            }
+          }
+        />
+      </Switch>
+    </Router>
   );
 }
 

@@ -33,6 +33,7 @@ class Services extends React.Component {
                         <div className="service-h1">
                             <h1 className="servicesH1">Services</h1>
                         </div>
+                        <div className="servicePList">
                         {services.map(service => 
                             <table key={service.id}>
                                     { service.category_id === 1 ?
@@ -52,7 +53,7 @@ class Services extends React.Component {
                             </table>
                             )
                         }
-                        <button>haha!!</button>
+                        </div>
                         <Link to='services'>
                             <button className='b_services'>Our Services</button>
                         </Link>

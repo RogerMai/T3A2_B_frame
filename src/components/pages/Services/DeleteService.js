@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import API from '../../../api'
+import API from '../../config/api'
 
 export default function DeleteService(props) {
 
@@ -15,10 +15,13 @@ export default function DeleteService(props) {
         fetch(`${API}services/${id}`, {
             method: 'DELETE'
         })
-        .then(response => {
-            if (response.status === 200) {
+        .then(result => {
+            if (result.status === 200) {
+                let currentListOfServices = [...props.services] // clones the original array
+                currentListOfServices = currentListOfServices.filter(service => service.id !== id) // checks the array to see if there is an existing service id, if false, will not render
                 alert("The service has been successfully deleted")
-                props.history.push("/")
+                props.setServices(currentListOfServices) // updates the setServices
+                props.history.push("/services") // redirects to services list page
             } else {
                 alert("There has been an error processing this request. Please try again")
                 props.history.push("/services")
@@ -27,9 +30,12 @@ export default function DeleteService(props) {
     }
     
     useEffect(() => {
-        let service = props.services[props.match.params.id]
-        console.log(service) // checks to see that data is being returned upon mounting - Object including service details returned
-        setServiceInfo(service) // sets the data for the form to allow for editing
+        fetch(`${API}services/${props.match.params.id}`)
+        .then(result => result.json())
+        .then(data => setServiceInfo(data))
+        // let service = props.services[props.match.params.id]
+        // console.log(service) // checks to see that data is being returned upon mounting - Object including service details returned
+        // setServiceInfo(service) // sets the data for the form to allow for editing
     }, [])
 
 

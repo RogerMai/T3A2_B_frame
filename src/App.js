@@ -11,13 +11,13 @@ import AdminBookings from './components/pages/AdminBookings'
 import NewService from './components/pages/Services/NewService'
 import EditService from './components/pages/Services/EditService'
 import DeleteService from './components/pages/Services/DeleteService'
-import { useState, useEffect } from 'react'
-import API from './api'
+import {useState, useEffect} from 'react'
+import API from './components/config/api'
 import DashBoard from './components/pages/DashBoard'
 import { Redirect } from "react-router-dom";
 
 function App() {
-  // set the services/categories to be passed down as props
+  // set the services to be passed down as props
   const [services, setServices] = useState([])
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
 
@@ -40,9 +40,9 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
         <Route exact path='/services' render={props => <Services {...props} services={services} />} />
-        <Route exact path='/services/new' render={props => <NewService {...props} services={services} />} />
-        <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} />} />
-        <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} />} />
+        <Route exact path='/services/new' render={props => <NewService {...props} services={services} setServices={setServices} />} />
+        <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} setServices={setServices} />} />
+        <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} setServices={setServices} />} />
         <Route path='/booking' exact component={Booking} />
         <Route path='/admin' exact component={AdminLogin} />
         <Route path='/admin/bookings' component={AdminBookings} />

@@ -1,20 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import API from '../../../api'
+import API from '../../config/api'
 
-export default function EditService(props) {
+export default function EditService({setServices, services, match, history, id }) {
     // console.log(props)
     const [formInfo, setFormInfo] = useState({
         service_name: "",
         price: ""
     })
-    
+
     useEffect(() => {
-        let service = props.services[props.match.params.id]
-        console.log(service) // checks to see that data is being returned upon mounting - Object including service details returned
-        setFormInfo(service) // sets the data for the form to allow for editing
-    }, [])
+        fetch(`${API}services/${match.params.id}`)
+            .then(result => result.json())
+            .then(data => setFormInfo(data))
+    }, [services, match])
 
     const onSubmit = (e) => {
         let response = {...formInfo}
@@ -30,11 +30,19 @@ export default function EditService(props) {
             }
         }).then(result => {
             if (result.status === 201) { // 201 status - success
-                props.history.push("/services")
-                alert("Service has been successfully updated")
+                return result.json()
             } else {
                 alert("There has been an error processing this update. Please check the details and try again") // Will return an unprocessible entity error
             }
+        }).then(service => {
+            let currentListOfServices = [...services] // cloning the original array
+            let index = currentListOfServices.findIndex(element => element.id === service.id)
+            // currentListOfServices[index] = service
+            currentListOfServices.splice(index, 1, service)
+            setServices(currentListOfServices)
+            alert("Service has been successfully updated")
+            setServices(currentListOfServices) // resetting the state of services
+            history.push("/services") // redirects to /services page
         })
     }
 
@@ -57,7 +65,7 @@ export default function EditService(props) {
                 <label htmlFor="price">Price:</label>
                 <input onChange={onChange} id="price" name="price"  value={formInfo.price} /> 
             </div>
-            <input type="submit" onChange={onChange} value={props.id} />
+            <input type="submit" onChange={onChange} value={id} />
         </form>
         <Link to="/services">Back to Services</Link>
         </>

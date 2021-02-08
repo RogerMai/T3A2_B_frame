@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import API from '../../../api'
+import API from '../../config/api'
 import { Link } from 'react-router-dom'
 
 export default function NewService(props) {
@@ -11,8 +11,8 @@ export default function NewService(props) {
     })
 
     const onSubmit = (e) => {
-        let response = {...newService}
-        console.log(response)
+        // let response = {...newService}
+        // console.log(response)
 
         e.preventDefault()
          fetch(`${API}services`, {
@@ -23,17 +23,27 @@ export default function NewService(props) {
             }
         }).then(result => {
             if (result.status === 201) {
-                props.history.push("/services")
-                alert("The service has been successfully added")
+                return result.json() 
+                // const currentListOfServices = [...services]
+                // currentListOfServices.push(newService)
+                // props.setServices("New list of services")
+                // props.history.push("/services")
+                // alert("The service has been successfully added")
             } else {
                 alert("All fields must be completed to proceed")
             }
+        }).then(service => {
+            const currentListOfServices = [...props.services]
+            currentListOfServices.push(service)
+            alert("The service has been successfully added")
+            props.setServices(currentListOfServices)
+            props.history.push("/services")
         })
     }
 
     const onChange = (e) => {
         let serviceDetails = e.target.id
-        console.log(serviceDetails)
+        // console.log(serviceDetails)
         setNewService({ ...newService, [serviceDetails]: e.target.value })
     }
     

@@ -2,7 +2,7 @@ import React from 'react';
 import './Services.css';
 import { Link } from "react-router-dom"
 import { useEffect, useState } from 'react'
-import API from '../../../api'
+import API from '../../config/api'
 
 export default function Services(props) {
     const [suburbs, setSuburbs] = useState([])
@@ -11,7 +11,7 @@ export default function Services(props) {
         fetch(`${API}suburbs`)
         .then(response => response.json())
         .then(data => setSuburbs(data));  
-    })
+    }, [])
 
     // List of services - both customer & admin view. Checks needed on edit/delete/add buttons to see if user is logged in. Services are mapped over and compiled into a table
     return (
@@ -25,17 +25,17 @@ export default function Services(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.services.map((service, index) => (
+                    {props.services.map(service => (
                         <tr key={service.id}>
                             <td>{service.service_name}</td>
                             <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
-                            <td><Link to={`services/${index}/edit`}>Edit Service </Link></td>
-                            <td><Link to={`services/${index}/delete`}> Delete Service</Link></td>
+                            <td><Link to={`/services/${service.id}/edit`}>Edit Service </Link></td>
+                            <td><Link to={`/services/${service.id}/delete`}> Delete Service</Link></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-                <Link to="services/new">Add a new service</Link>
+                <Link to="/services/new">Add a new service</Link>
             <h3>Check to see if we service your area...</h3>
             <div>
                 {suburbs.map(suburb => 

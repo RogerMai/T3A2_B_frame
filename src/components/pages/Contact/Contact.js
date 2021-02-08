@@ -1,6 +1,6 @@
 import React from 'react';
 import './Contact.css';
-import API from '../../../api'
+import API from '../../config/api'
 import Spinner from '../../layout/Spinner'
 import { Link } from 'react-router-dom';
 import { Form, Col, Container, Row, Card } from 'react-bootstrap';

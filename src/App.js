@@ -16,7 +16,7 @@ import API from './api'
 
 
 function App() {
-  // set the services/categories to be passed down as props
+  // set the services to be passed down as props
   const [services, setServices] = useState([])
     
   useEffect(() => {
@@ -35,9 +35,9 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
         <Route exact path='/services' render={props => <Services {...props} services={services} />} />
-        <Route exact path='/services/new' render={props => <NewService {...props} services={services} />} />
-        <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} />} />
-        <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} />} />
+        <Route exact path='/services/new' render={props => <NewService {...props} services={services} setServices={setServices} />} />
+        <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} setServices={setServices} />} />
+        <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} setServices={setServices} />} />
         <Route path='/booking' exact component={Booking} />
         <Route path='/admin' exact component={AdminLogin} />
         <Route path='/admin/bookings' component={AdminBookings} />

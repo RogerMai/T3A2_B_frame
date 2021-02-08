@@ -17,8 +17,8 @@ export default function EditService(props) {
     }, [])
 
     const onSubmit = (e) => {
-        let response = {...formInfo}
-        console.log(response) // Checking the response received when submitting
+        // let response = {...formInfo}
+        // console.log(response) // Checking the response received when submitting
 
         // fetches the API for Rails, formats data into JSON to post to database with checks on result status. Redirects back to the Services page once successfully completed.
         e.preventDefault()
@@ -30,11 +30,16 @@ export default function EditService(props) {
             }
         }).then(result => {
             if (result.status === 201) { // 201 status - success
-                props.history.push("/services")
-                alert("Service has been successfully updated")
+                return result.json()
             } else {
                 alert("There has been an error processing this update. Please check the details and try again") // Will return an unprocessible entity error
             }
+        }).then(service => {
+            let currentListOfServices = [...props.services] // cloning the original array
+            currentListOfServices.push(service)
+            alert("Service has been successfully updated")
+            props.setServices(currentListOfServices) // resetting the state of services
+            props.history.push("/services") // redirects to /services page
         })
     }
 

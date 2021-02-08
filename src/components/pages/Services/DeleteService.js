@@ -15,10 +15,13 @@ export default function DeleteService(props) {
         fetch(`${API}services/${id}`, {
             method: 'DELETE'
         })
-        .then(response => {
-            if (response.status === 200) {
+        .then(result => {
+            if (result.status === 200) {
+                let currentListOfServices = [...props.services] // clones the original array
+                currentListOfServices = currentListOfServices.filter(service => service.id !== id) // checks the array to see if there is an existing service id, if false, will not render
                 alert("The service has been successfully deleted")
-                props.history.push("/")
+                props.setServices(currentListOfServices) // updates the setServices
+                props.history.push("/services") // redirects to services list page
             } else {
                 alert("There has been an error processing this request. Please try again")
                 props.history.push("/services")

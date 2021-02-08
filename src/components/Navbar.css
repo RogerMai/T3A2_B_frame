@@ -137,7 +137,9 @@
       transition: 250ms;
     }
   
-    button {
+
+    /* TODO - BE MORE DESCRIPTIVE */
+    /* button {
       display: none;
-    }
+    } */
   }

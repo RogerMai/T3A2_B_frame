@@ -6,9 +6,15 @@ import './Navbar.css';
 
 function Navbar(props) {
     const [click, setClick] = useState(false)
+    const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
 
     const handleClick = () => setClick(!click)
     const closeMobileMenu = () => setClick(false);
+    const handleLogoutClick = () => {
+        window.location.href = "/";
+      }
+
+
 
     return (
         <>
@@ -19,6 +25,7 @@ function Navbar(props) {
                 <div className='larrymenu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                 </div>
+                
                 <ul className={click ? 'larrynav-menu active' : 'larrynav-menu'}>
                     <li id='larrynav-item'>
                         <Link to='/services' id='larrynav-links' onClick={closeMobileMenu}>Services</Link> 

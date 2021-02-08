@@ -7,5 +7,9 @@ export function AdminButton() {
         <Link to='/admin'>
             <button id='b_admin'>Admin Login</button>
         </Link>
+        
+        // <Link>
+        //     {loggedInStatus === "LOGGED_IN" && <button onClick={handleLogoutClick}>Log out!!</button>}
+        // </Link>
     )
 }

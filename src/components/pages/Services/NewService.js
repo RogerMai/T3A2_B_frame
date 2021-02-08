@@ -1,7 +1,8 @@
-import React from 'react'
-import { useState } from 'react'
-import API from '../../config/api'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { useState } from 'react';
+import API from '../../config/api';
+import { Link } from 'react-router-dom';
+import './NewService.css';
 
 export default function NewService(props) {
     const [newService, setNewService] = useState({

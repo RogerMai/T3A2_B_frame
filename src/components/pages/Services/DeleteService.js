@@ -30,9 +30,12 @@ export default function DeleteService(props) {
     }
     
     useEffect(() => {
-        let service = props.services[props.match.params.id]
-        console.log(service) // checks to see that data is being returned upon mounting - Object including service details returned
-        setServiceInfo(service) // sets the data for the form to allow for editing
+        fetch(`${API}services/${props.match.params.id}`)
+        .then(result => result.json())
+        .then(data => setServiceInfo(data))
+        // let service = props.services[props.match.params.id]
+        // console.log(service) // checks to see that data is being returned upon mounting - Object including service details returned
+        // setServiceInfo(service) // sets the data for the form to allow for editing
     }, [])
 
 

@@ -11,7 +11,7 @@ export default function NewService(props) {
     })
 
     const onSubmit = (e) => {
-        let response = {...newService}
+        // let response = {...newService}
         // console.log(response)
 
         e.preventDefault()

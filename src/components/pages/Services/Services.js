@@ -6,18 +6,11 @@ import API from '../../../api'
 
 export default function Services(props) {
     const [suburbs, setSuburbs] = useState([])
-    const [categories, setCategories] = useState([])
 
     useEffect(() => {
         fetch(`${API}suburbs`)
         .then(response => response.json())
         .then(data => setSuburbs(data));  
-    }, [])
-
-    useEffect(() => {
-        fetch(`${API}categories`)
-        .then(response => response.json())
-        .then(data => setCategories(data));  
     }, [])
 
     // List of services - both customer & admin view. Checks needed on edit/delete/add buttons to see if user is logged in. Services are mapped over and compiled into a table
@@ -32,12 +25,12 @@ export default function Services(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.services.map((service, index) => (
+                    {props.services.map(service => (
                         <tr key={service.id}>
                             <td>{service.service_name}</td>
                             <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
-                            <td><Link to={`/services/${index}/edit`}>Edit Service </Link></td>
-                            <td><Link to={`/services/${index}/delete`}> Delete Service</Link></td>
+                            <td><Link to={`/services/${service.id}/edit`}>Edit Service </Link></td>
+                            <td><Link to={`/services/${service.id}/delete`}> Delete Service</Link></td>
                         </tr>
                     ))}
                 </tbody>

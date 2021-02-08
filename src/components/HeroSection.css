@@ -80,6 +80,7 @@ video {
 }
 
 #b_booking {
+    text-decoration: none;
     padding: 18px 40px;
     border-radius: 4px;
     outline: none;
@@ -111,7 +112,7 @@ video {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .hero-container  > h1 {
         font-size: 50px;
         margin-top: -100px;
@@ -176,6 +177,7 @@ video {
     }
    
     #b_services {
+        text-decoration: none;
         padding: 12px 40px;
         border-radius: 4px;
         outline: none;
@@ -187,7 +189,8 @@ video {
     }
     
     #b_services:hover {
-        padding: 12px 45px;
+        text-decoration: none;
+        padding: 15px 43px;
         border: none;
         color: #000;
         background-color: #84dbc2;
@@ -195,7 +198,8 @@ video {
     }
     
     #b_booking {
-        padding: 15px 40px;
+        text-decoration: none;
+        padding: 15px 41px;
         border-radius: 4px;
         outline: none;
         border: none;
@@ -206,7 +210,8 @@ video {
     }
     
     #b_booking:hover {
-        padding: 15px 37px;
+        text-decoration: none;
+        padding: 12px 38px;
         border: 3px solid #fff;
         color: #fff;
         background-color: #276755;

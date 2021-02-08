@@ -17,10 +17,10 @@ function HeroSection() {
             <div className="hero-button">
 
                 <Link to='services'>
-                    <button className='b_services'>Our Services</button>
+                    <button id='b_services'>Our Services</button>
                 </Link>
                 <Link to='booking'>
-                    <button className='b_booking'>Book Now<i className='far fa-play-circle' /></button>
+                    <button id='b_booking'>Book Now<i className='far fa-play-circle' /></button>
                 </Link>
                 
             </div>

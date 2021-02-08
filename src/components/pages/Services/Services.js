@@ -15,32 +15,36 @@ export default function Services(props) {
 
     // List of services - both customer & admin view. Checks needed on edit/delete/add buttons to see if user is logged in. Services are mapped over and compiled into a table
     return (
-        <>
-        <h1>Services</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Service Name</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {props.services.map(service => (
-                        <tr key={service.id}>
-                            <td>{service.service_name}</td>
-                            <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
-                            <td><Link to={`/services/${service.id}/edit`}>Edit Service </Link></td>
-                            <td><Link to={`/services/${service.id}/delete`}> Delete Service</Link></td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-                <Link to="/services/new">Add a new service</Link>
-            <h3>Check to see if we service your area...</h3>
-            <div>
-                {suburbs.map(suburb => 
-                <p key={suburb.id}>{suburb.name + ","}</p>)}
+        <div className="service-bg">
+            <div className="serviceCard">
+                <div className="serviceContainer">
+                    <h1>Services</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {props.services.map(service => (
+                                <tr key={service.id}>
+                                    <td>{service.service_name}</td>
+                                    <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
+                                    <td><Link to={`/services/${service.id}/edit`}>Edit Service </Link></td>
+                                    <td><Link to={`/services/${service.id}/delete`}> Delete Service</Link></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                        <Link to="/services/new">Add a new service</Link>
+                    <h3>Check to see if we service your area...</h3>
+                    <div>
+                        {suburbs.map(suburb => 
+                        <p key={suburb.id}>{suburb.name + ","}</p>)}
+                    </div>
+                </div>
             </div>
-        </>
-        )
+        </div>
+    )
 }

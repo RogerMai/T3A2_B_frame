@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Test extends Component {
+export default class Logout extends Component {
     constructor(props) {
         super(props);
 
@@ -10,15 +10,13 @@ export default class Test extends Component {
     handleLogoutClick() {
       window.location.href = "/";
     }
-
+    
     render() {
-        return (
+        return(
             <div>
-                <h1>Test</h1>
-
                 {this.props.loggedInStatus === "LOGGED_IN" && <button onClick={this.handleLogoutClick}>Log out!!</button>}
-
             </div>
-        );
+
+        )
     }
 }

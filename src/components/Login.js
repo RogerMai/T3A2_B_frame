@@ -27,14 +27,12 @@ export default class Login extends Component {
         const { username, password, } = this.state;
 
         axios
-        
             .post("http://larryslawncare.herokuapp.com/sign_in",
             
                 {
                     username: username,
                     password: password,
                 },
-               
             )
             .then(response => {
                 

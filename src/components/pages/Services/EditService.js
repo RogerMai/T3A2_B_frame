@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import API from '../../config/api'
+import './EditService.css';
+import { Form, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function EditService({setServices, services, match, history, id }) {
     // console.log(props)
@@ -53,21 +56,28 @@ export default function EditService({setServices, services, match, history, id }
     }
 
     return (
-        <>
-        <h1>Edit Service</h1>
-        
-        <form onSubmit={onSubmit}>
-            <div>
-                <label htmlFor="service_name">Service Name:</label>
-                <input onChange={onChange} id="service_name" name="service_name"  value={formInfo.service_name} />
+        <div className="editService-bg">
+            <div className="editServiceCard">
+                <div className="editServiceContainer">
+                    <div className="editService-h1">
+                        <h1>Edit Service</h1>
+                    </div>
+                    <Col>
+                        <Form onSubmit={onSubmit}>
+                            <Form.Group>
+                                <Form.Label htmlFor="service_name">Service Name:</Form.Label>
+                                <Form.Control onChange={onChange} id="service_name" name="service_name"  value={formInfo.service_name} />
+                            </Form.Group>
+                            <Form.Group className="editPrice">
+                                <Form.Label htmlFor="price">Price:</Form.Label>
+                                <Form.Control onChange={onChange} id="price" name="price"  value={formInfo.price} /> 
+                            </Form.Group>
+                            <Form.Control id="editPriceSub" type="submit" onChange={onChange} value={id} />
+                        </Form>
+                        <Link to="/services" className="backService">Back to Services</Link>
+                    </Col>
+                </div>
             </div>
-            <div>
-                <label htmlFor="price">Price:</label>
-                <input onChange={onChange} id="price" name="price"  value={formInfo.price} /> 
-            </div>
-            <input type="submit" onChange={onChange} value={id} />
-        </form>
-        <Link to="/services">Back to Services</Link>
-        </>
+        </div>
     )
 }

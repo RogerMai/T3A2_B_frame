@@ -44,7 +44,7 @@ export default class Login extends Component {
             })
             .catch(error => {
                 console.log("login error", error);
-                alert("Username or Password incorrect !")
+                alert("Username or Password incorrect! Please try again.")
             });
         event.preventDefault();
     }

@@ -1,22 +1,36 @@
-import React from 'react'
+import {useEffect, useState} from 'react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import EditBooking from './EditBooking'
-import Record from './Record'
-import { useState, useEffect } from 'react'
+import Records from './Records'
 
 
 
-function AdminBookings() {
+function AdminBookings(props) {
     const [records, setRecords] = useState([])
+
+    useEffect(() => {
+      fetch('https://larryslawncare.herokuapp.com/bookings')
+        .then(res => res.json())
+        .then(data => setRecords(data))
+  }, [])
+
+    const deleteRecord = (id) => {
+      fetch('https://larryslawncare.herokuapp.com/bookings/' + id, {
+        method: "DELETE"
+      })
+        .then(response => {
+          if (response.status == 200) {
+            let newRecords = [...records]
+            newRecords = newRecords.filter(record => record.id != id)
+            setRecords(newRecords)
+            console.log(newRecords)
+          }
+        })
+      }
+
     return (
-        <BrowserRouter>
-            <Link to="/bookings/:id">Edit</Link>
-            <Link to="/admin/view">View</Link>
-            <Switch>
-                <Route path="/bookings/:id" render={() => <EditBooking records={records} />}></Route>
-                <Route path="/admin/view" component={Record}></Route>
-            </Switch>
-        </BrowserRouter>
+      <>
+        <Records records={records} deleteRecord={deleteRecord}  />
+      </>
     );
 }
 

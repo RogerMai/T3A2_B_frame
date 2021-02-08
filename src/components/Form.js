@@ -1,28 +1,21 @@
-// import './normalize.css'
-// import './skeleton.css'
 import React, {useState} from "react"
 import Select from 'react-select'
-
-const optionsServices = [
-{value: "lorem", label: "Lorem"},
-{value: "ipsum", label: "ipsum"},
-{value: "dolor", label: "dolor"},
-{value: "sitamet", label: "sit amet"}
-]
 
 class Form extends React.Component {
     constructor(props) {
         super(props)
     
         this.state = {
-             firstname: '',
-             lastname: '',
-             phone: '',
+             first_name: '',
+             last_name: '',
+             phonenumber: '',
              email: '',
              address: '',
              notes: '',
-             selectedService: null,
-             suburb: 'lorem',
+             service_id: null,
+             suburb_id: null,
+             suburbs: [],
+             optionsServices: [],
              postcode: '4000',
              date: ''
         }
@@ -35,56 +28,100 @@ class Form extends React.Component {
     }
 
     handleOptions = selectedService => {
-        this.setState({selectedService})
-        console.log(selectedService)
+        this.setState({service_id: selectedService.value})
+    }
+
+    handleSuburb = selectedSuburb => {
+      this.setState({suburb_id: selectedSuburb.value})
     }
 
     handleSubmit = (event) => {
-    event.preventDefault()
-    let ph = this.state.phone
-    if (!Number(ph)) {
-        alert("Phone must be a number")
+      event.preventDefault()
+      let ph = this.state.phonenumber
+      if (!Number(ph)) {
+          alert("Phone must be a number")
+      }
+      fetch('https://larryslawncare.herokuapp.com/bookings', {
+        method: 'POST',
+        body: JSON.stringify(this.state),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+          response.json()
+      })
+      .then((data) => console.log(data))
+      .catch(() => alert("Please fill in all fields"))
     }
-    console.log(this.state)
-  }
+
+    componentDidMount() {
+      fetch('https://larryslawncare.herokuapp.com/services')
+        .then(result => result.json())
+        .then(data => {
+          let array = []
+          data.forEach((element) => {
+            array.push({
+              value: element.id,
+              label: element.service_name
+            })
+          })
+          this.setState({optionsServices: array})
+          console.log(array)
+
+          fetch('https://larryslawncare.herokuapp.com/suburbs')
+            .then(result => result.json())
+            .then (data => {
+              let suburbs = []
+              data.forEach((element) => {
+                suburbs.push({
+                  value: element.id,
+                  label: element.name
+                })
+              })
+              this.setState({suburbs: suburbs})
+              console.log(suburbs)
+            })
+        })
+    }
 
   render() {
     const { selectedService } = this.state
     return (
-      <div className="Form">
+      <div className="bookingForm">
         <form onSubmit={this.handleSubmit}>
           <div className="container">
             <div className="row">
               <div className="one-half column">
-                <label htmlFor="firstname">
+                <label htmlFor="first_name">
                   First Name
                 </label>
                 <input 
                   className="u-full-width"
                   type="text" 
 
-                  name="firstname" 
-                  id="firstname"
+                  name="first_name" 
+                  id="first_name"
                   onChange={this.handleChange}
                 />
-                <label htmlFor="lastname">
+                <label htmlFor="last_name">
                   Last Name
                 </label>
                 <input 
                   className="u-full-width"
                   type="text" 
-                  name="lastname"  
-                  id="lastname" 
+                  name="last_name"  
+                  id="last_name" 
                   onChange={this.handleChange}
                 />
-                <label htmlFor="phone">
+                <label htmlFor="phonenumber">
                   Phone
                 </label>
                 <input 
                   className="u-full-width"
                   type="tel" 
-                  name="phone"  
-                  id="phone" 
+                  name="phonenumber"  
+                  id="phonenumber" 
                   onChange={this.handleChange}
                 />
                 <label htmlFor="email">
@@ -107,57 +144,36 @@ class Form extends React.Component {
                   id="address"
                   onChange={this.handleChange} 
                 />
-
-                <div className="row">
-                  <div className="one-half column">
-                    <label htmlFor="suburb">
-                      Suburb
-                    </label>
-                    <select 
-                        className="u-full-width"
-                        onChange={this.handleChange}
-                        name="suburb"
-                    >
-                      <option value="lorem">Lorem</option>
-                      <option value="ipsum">ipsum</option>
-                    </select>
-                  </div>
-                  <div className="one-half column">
-                    <label htmlFor="postcode">
-                      Postcode
-                    </label>
-                    <select 
-                        className="u-full-width"
-                        onChange={this.handleChange}
-                        name="postcode"
-                    >
-                      <option value="4000">4000</option>
-                      <option value="4001">4001</option>
-                    </select>
-                  </div>
-                </div>
-
+                <label htmlFor="suburb_id">
+                  Suburb
+                </label>
+                <Select 
+                    className="u-full-width"
+                    onChange={this.handleSuburb}
+                    name="suburb_id"
+                    options={this.state.suburbs}
+                >
+                </Select>
               </div>
               <div className="one-half column">
-                <label htmlFor="services">
+                <label htmlFor="service_id">
                   Services required
                 </label>
                 <Select 
                     className="u-full-width"
                     onChange={this.handleOptions}
-                    name="selectedService"
-                    options={optionsServices}
+                    name="service_id"
+                    options={this.state.optionsServices}
                     placeholder="Select all services required"
-                    isMulti
                 />
-                <label htmlFor="date">
+                <label htmlFor="booking_date">
                       Date
                     </label>
                     <input 
                       className="u-full-width"
                       type="date" 
-                      name="date"  
-                      id="date" 
+                      name="booking_date"  
+                      id="booking_date" 
                       onChange={this.handleChange}
                     />
                 <label htmlFor="notes">

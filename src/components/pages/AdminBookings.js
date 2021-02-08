@@ -1,53 +1,38 @@
+import {useEffect, useState} from 'react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
-import EditBooking from './EditBooking'
-import Record from './Record'
-import {useState, useEffect} from 'react'
-import seedRecords from './seedRecords'
+import Records from './Records'
 
 
 
-function AdminBookings() {
- const [records, setRecords] = useState([])
- useEffect(() => {
-   let mockRecords = seedRecords()
-   setRecords(mockRecords)
-   }, [])
-  return (
-    <BrowserRouter>
-        <Link to="/bookings/:id">Edit</Link>
-        <Link to="/view">View</Link>
-        <Switch>
-          <Route path="/bookings/:id" render={() => <EditBooking records={records}/>}></Route>
-          <Route path="/view" component={Record}></Route>
-        </Switch>
-    </BrowserRouter>
-  );
-}
+function AdminBookings(props) {
+    const [records, setRecords] = useState([])
 
-export default AdminBookings;
-import React from 'react'
+    useEffect(() => {
+      fetch('https://larryslawncare.herokuapp.com/bookings')
+        .then(res => res.json())
+        .then(data => setRecords(data))
+  }, [])
 
-export default function Bookings() {
+    const deleteRecord = (id) => {
+      fetch('https://larryslawncare.herokuapp.com/bookings/' + id, {
+        method: "DELETE"
+      })
+        .then(response => {
+          if (response.status == 200) {
+            let newRecords = [...records]
+            newRecords = newRecords.filter(record => record.id != id)
+            setRecords(newRecords)
+            console.log(newRecords)
+          }
+        })
+      }
+
     return (
-        <>
-            <table>
-                <th>
-                    <tr>
-                        <td>Date</td>
-                        <td>Customer</td>
-                        <td>Address</td>
-                        <td>Phone</td>
-                        <td>Email</td>
-                        <td>Service</td>
-                        <td>Notes</td>
-                    </tr>
-                </th>
-                <tbody>
-                    <tr>
-                    
-                    </tr>
-                </tbody>
-            </table>
-        </>
+      <>
+        <Records records={records} deleteRecord={deleteRecord}  />
+      </>
     );
 }
+
+
+export default AdminBookings;

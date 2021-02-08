@@ -1,11 +1,10 @@
 import React from 'react';
 import './Contact.css';
-import API from '../../api';
-import Spinner from '../layout/Spinner';
+import API from '../../../api'
+import Spinner from '../../layout/Spinner'
 import { Link } from 'react-router-dom';
 import { Form, Col, Container, Row, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Button } from 'bootstrap';
 
 class Contact extends React.Component {
     state = {
@@ -15,7 +14,7 @@ class Contact extends React.Component {
   componentDidMount () {
     this.setState({ loading: true })
 
-    fetch(`${API}/suburbs`)
+    fetch(`${API}suburbs`)
     .then(response => response.json())
     .then(data => this.setState({name: data, loading: false}));  
   }

@@ -3,6 +3,8 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import {Link, Route} from 'react-router-dom'
 import EditBooking from './EditBooking'
+import {useState} from 'react'
+
 
 const clickDelete = () => {
     confirmAlert({
@@ -21,17 +23,15 @@ const clickDelete = () => {
     })
   };
 
-  const clickEdit = () => {
-      alert('edit')
-  }
-
 const Record = () => {
     let data = [
         {
             id: 1,
             date: "12-02-2021",
-            customer: "John Doe",
-            address: "123 Fake St, Brisbane 4000",
+            firstname: "John",
+            lastname: "Doe",
+            address: "123 Fake St",
+            suburb: "Brisbane",
             phone: "1404 123 123",
             email: "email@email.com",
             service: "Mowing",
@@ -39,14 +39,18 @@ const Record = () => {
         }, {
             id: 2,
             date: "13-02-2021",
-            customer: "Jane Smith",
-            address: "12 Street St, Brisbane 4001",
+            firstname: "Jane",
+            lastname: "Smith",
+            address: "12 Street St",
+            suburb: "Brisbane",
             phone: "0402 234 234",
             email: "jane@jane.com",
             service: "Gutter clearing",
             notes: ''
         }
     ]
+
+    const [records, setRecords] = useState(data)
 
     return (
         <>
@@ -69,10 +73,10 @@ const Record = () => {
                       <p>{data.date}</p>
                   </td>
                   <td>
-                      <p>{data.customer}</p>
+                      <p>{data.firstname} {data.lastname}</p>
                   </td>
                   <td>
-                      <p>{data.address}</p>
+                      <p>{data.address}, {data.suburb}</p>
                   </td>
                   <td>
                       <p>{data.phone}</p>
@@ -87,7 +91,7 @@ const Record = () => {
                       <p>{data.notes}</p>
                   </td>
                   <td>
-                      <Link to="/edit">
+                      <Link to="/bookings/:id">
                         <button>Edit</button>
                       </Link>
                   </td>
@@ -98,7 +102,7 @@ const Record = () => {
           ))}
         </tbody>
     </table>
-    <Route path="/edit" component={EditBooking}></Route>
+    <Route path="/bookings/:id" component={EditBooking}></Route>
     </>
     )
   }

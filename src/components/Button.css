@@ -2,7 +2,8 @@
     --primary: #84dbc2;
   }
   
-  .b_admin {
+
+  #b_admin {
     padding: 8px 20px;
     border-radius: 4px;
     outline: none;
@@ -13,12 +14,13 @@
     background-color: #fff;
   }
   
-  .b_admin:hover {
+
+  #b_admin:hover {
     padding: 6px 18px;
     transition: all 0.3s ease-out;
-    background-color: var(--primary);
+    background-color: #84dbc2;
     color: #fff;
     border-radius: none;
-    border: 2px solid var(--primary);
+    border: 2px solid #84dbc2;
     transition: all 0.3s ease-out;
   }

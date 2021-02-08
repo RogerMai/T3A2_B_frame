@@ -21,11 +21,6 @@ class Form extends React.Component {
         }
     }
 
-    handleChange = (event) => {
-        let name = event.target.name
-        let value = event.target.value
-        this.setState({[name]: value})
-    }
 
     handleOptions = selectedService => {
         this.setState({service_id: selectedService.value})
@@ -34,7 +29,9 @@ class Form extends React.Component {
     handleSuburb = selectedSuburb => {
       this.setState({suburb_id: selectedSuburb.value})
     }
+  }
 
+<<<<<<< HEAD
     handleSubmit = (event) => {
       event.preventDefault()
       let ph = this.state.phonenumber
@@ -196,6 +193,5 @@ class Form extends React.Component {
       </div>
     )
   }
-}
 
-export default Form;
+export default BookingForm;

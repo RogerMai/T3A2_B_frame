@@ -1,49 +1,44 @@
-import React, { useState } from 'react';
+
+import React, { Component } from 'react';
+import axios from 'axios';
+import Login from '../Login';
 import './Admin.css';
-import LoginForm from '../LoginForm'
 
+export default class AdminLogin extends Component {
+    constructor(props) {
+        super(props);
 
-function Admin() {
-    const adminUser = {
-      email: "admin@admin.com",
-      password: "admin123"
+        this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
     }
-  
-    const [user,setUser] = useState({name: "", email: ""});
-    const [error, setError] = useState("");
-  
-    const Login = details => {
-      console.log(details);
-  
-      if (details.email == adminUser.email && details.password == adminUser.password) {
-        console.log("Logged In")
-        setUser({
-          name: details.name,
-          email: details.email
-        });
-      } else {
-        console.log("Details do not match")
-        setError("Details do not match")
-      }
+
+    handleSuccessfulAuth(data) {
+        this.props.handleLogin(data);
     }
-  
-    const Logout = () => {
-      console.log("Logout");
-        setUser({ name: "", email: ""});
+
+    handleLogoutClick() {
+        axios.delete("http://larryslawncare.herokuapp.com/logout", { withCredentials: true}).then(Response => {
+            this.props.handleLogout();
+        }).catch(error => {
+            console.log("logout error", error);
+        })
     }
-  
-    return (
-      <div className="App">
-        {(user.email != "") ? (
-          <div className="welcome">
-            <h2>Welcome, <span>{user.name}</span></h2>
-            <button onClick={Logout}>Logout</button>
-          </div>
-        ) : (
-          <LoginForm Login={Login} error={error} />
-        )}
-      </div>
-    );
-  }
-  
-  export default Admin;
+
+    render() {
+        return (
+            <div className="admin-bg">
+                <div className="adminCard">
+                    <div className="adminContainer">
+                        <div className="admin-h1">
+                            <h1>Admin Login</h1>
+                        </div>
+                        <div className="adminForm">
+                            <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        );
+    }
+}
+

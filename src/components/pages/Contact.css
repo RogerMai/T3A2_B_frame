@@ -64,6 +64,13 @@
 .downpart {
     margin-top: 5px;
     height: 250px;
+    margin-bottom: 15px;
+}
+
+.leftBpart {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
 .contactBButton {
@@ -173,7 +180,7 @@
         display: flex;
         align-items: center;
         width: 350px;
-        height: 920px;
+        height: 1000px;
         justify-content: center;
         margin-top: 20px;
         background-color: #e9e9e9;
@@ -186,7 +193,7 @@
         padding-top: 20px;
         max-width: 330px;
         width: 100%;
-        height: 900px;
+        height: 980px;
         background-color: #ffffff;
         padding: 20px;
         border-radius: 8px;

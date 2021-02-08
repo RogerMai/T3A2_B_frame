@@ -33,7 +33,7 @@ function Navbar(props) {
                         <Link to='/admin' id='larrynav-links-mobile' onClick={closeMobileMenu}>Admin Login</Link> 
                     </li>
                 </ul>
-                <AdminButton />
+                <AdminButton id="adminButton" />
             </nav>
         </>
     )

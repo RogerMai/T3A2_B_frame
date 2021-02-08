@@ -65,6 +65,14 @@ class Contact extends React.Component {
                                             </ul>
                                             
                                         </Card>
+
+                                        {/* <Card className="contactrightDown"> */}
+                                            <div className="leftBpart">
+                                                <Link to='booking'>
+                                                    <button id='c_booking'>Booking Now<i className='far fa-play-circle' /></button>
+                                                </Link>
+                                            </div> 
+                                        {/* </Card> */}
                                     </div>
                                 </Col>
                                 <Col md>

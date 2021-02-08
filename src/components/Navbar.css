@@ -137,7 +137,7 @@
       transition: 250ms;
     }
   
-    button {
+    #b_admin {
       display: none;
     }
   }

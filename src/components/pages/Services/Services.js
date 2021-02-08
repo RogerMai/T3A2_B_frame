@@ -2,7 +2,7 @@ import React from 'react';
 import './Services.css';
 import { Link } from "react-router-dom"
 import { useEffect, useState } from 'react'
-import API from '../../../api'
+import API from '../../config/api'
 
 export default function Services(props) {
     const [suburbs, setSuburbs] = useState([])

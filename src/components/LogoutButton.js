@@ -1,15 +1,39 @@
-import React from 'react'
-import './LogoutButton.css';
-import { Link } from 'react-router-dom';
+// import React, { Component } from 'react'
+// import './LogoutButton.css';
 
-export function LogoutButton() {
+// export default class LogoutButton extends Component {
+//     constructor(props) {
+//         super(props);
+
+//         this.handleLogoutClick = this.handleLogoutClick.bind(this);
+//     }
+
+//     handleLogoutClick() {
+//         window.location.href = "/";
+//     }
+
+//     render() {
+//         return (
+
+//             <div>
+//                 {this.props.loggedInStatus === "LOGGED_IN" && <button onClick={this.handleLogoutClick}>Log out!!</button>}
+//             </div>
+//         )
+//     }
+// }
+import React, { Component } from 'react'
+import './LogoutButton.css';
+
+const LogoutButton = () => {
+    const handleLogoutClick = () => {
+        window.location.href = "/";
+    }
+
     return (
-        <Link to='/'>
-            <button id='b_Logout'>Logout</button>
-        </Link>
-        
-        // <Link>
-        //     {loggedInStatus === "LOGGED_IN" && <button onClick={handleLogoutClick}>Log out!!</button>}
-        // </Link>
+      <div>
+        <button onClick={handleLogoutClick}>Log out!!</button>
+      </div>
     )
 }
+
+export default LogoutButton;

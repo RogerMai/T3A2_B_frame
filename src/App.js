@@ -35,7 +35,7 @@ function App() {
   // props are destructured in the Router to allow for use in services component
   return (
     <Router>
-      <Navbar />
+      <Navbar loggedInStatus={loggedInStatus} />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />

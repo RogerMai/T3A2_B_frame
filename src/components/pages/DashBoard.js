@@ -16,7 +16,7 @@ export default class Test extends Component {
             <div>
                 <h1>Test</h1>
 
-                {this.props.loggedInStatus === "LOGGED_IN" && <button onClick={this.handleLogoutClick}>Log out!!</button>}
+                {/* {this.props.loggedInStatus === "LOGGED_IN" && <button onClick={this.handleLogoutClick}>Log out!!</button>} */}
 
             </div>
         );

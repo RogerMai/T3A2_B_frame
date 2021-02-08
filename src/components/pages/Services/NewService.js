@@ -3,7 +3,7 @@ import { useState } from 'react';
 import API from '../../config/api';
 import { Link } from 'react-router-dom';
 import './NewService.css';
-import { Form, Col, Container, Row } from 'react-bootstrap';
+import { Form, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function NewService(props) {

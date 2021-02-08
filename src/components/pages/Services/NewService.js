@@ -3,6 +3,8 @@ import { useState } from 'react';
 import API from '../../config/api';
 import { Link } from 'react-router-dom';
 import './NewService.css';
+import { Form, Col, Container, Row } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function NewService(props) {
     const [newService, setNewService] = useState({
@@ -16,7 +18,7 @@ export default function NewService(props) {
         // console.log(response)
 
         e.preventDefault()
-         fetch(`${API}services`, {
+        fetch(`${API}services`, {
             method: "POST",
             body: JSON.stringify(newService),
             headers: {
@@ -24,7 +26,7 @@ export default function NewService(props) {
             }
         }).then(result => {
             if (result.status === 201) {
-                return result.json() 
+                return result.json()
                 // const currentListOfServices = [...services]
                 // currentListOfServices.push(newService)
                 // props.setServices("New list of services")
@@ -47,22 +49,31 @@ export default function NewService(props) {
         // console.log(serviceDetails)
         setNewService({ ...newService, [serviceDetails]: e.target.value })
     }
-    
+
     return (
-    <>
-    <h1>Add New Service</h1>
-        <form onSubmit={onSubmit}>
-            <div>
-                <label htmlFor="service_name">Service Name:</label>
-                <input id="service_name" onChange={onChange} value={(newService.service_name)}/>
+        <div className="newService-bg">
+            <div className="newServiceCard">
+                <div className="newServiceContainer">
+                    <div className="newService-h1">
+                        <h1>Add New Service</h1>
+                    </div>
+                    <Col>
+                        <Form onSubmit={onSubmit} className="newServiceForm">
+                    
+                            <Form.Group>
+                                <Form.Label htmlFor="service_name">Service Name:</Form.Label>
+                                <Form.Control id="service_name" onChange={onChange} value={(newService.service_name)} />
+                            </Form.Group>
+                            <Form.Group className="priceService">
+                                <Form.Label htmlFor="price">Price:</Form.Label>
+                                <Form.Control id="price" onChange={onChange} value={(newService.price)} />
+                            </Form.Group>
+                            <button id="newServiceButton">Add New Service</button>
+                        </Form>
+                        <Link to="/services" className="backService">Back to Services</Link>
+                    </Col>
+                </div>
             </div>
-            <div>
-                <label htmlFor="price">Price:</label>
-                <input id="price" onChange={onChange} value={(newService.price)}/>
-            </div>
-            <button>Add New Service</button>
-        </form>
-        <Link to="/services">Back to Services</Link>
-    </>
+        </div>
     )
 }

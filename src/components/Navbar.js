@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { AdminButton } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
+import { LogoutButton } from './LogoutButton';
 
 
 function Navbar(props) {
@@ -10,11 +11,17 @@ function Navbar(props) {
 
     const handleClick = () => setClick(!click)
     const closeMobileMenu = () => setClick(false);
-    const handleLogoutClick = () => {
-        window.location.href = "/";
-      }
+    
+    // const isLoggedIn = this.state.isLoggedIn;
 
-
+    // if (isLoggedIn) {
+    //     changeBut = <LogoutButton onClick={this.handleLogoutClick} />;
+    // } else {
+    //     changeBut = <AdminButton />
+    // }
+       
+    // const changeBut = () => {
+    // }
 
     return (
         <>
@@ -39,8 +46,16 @@ function Navbar(props) {
                     <li id='larrynav-item'>
                         <Link to='/admin' id='larrynav-links-mobile' onClick={closeMobileMenu}>Admin Login</Link> 
                     </li>
+                    <li id='larrynav-item'>
+                        <Link to='/' id='larrynav-links-mobile' onClick={closeMobileMenu}>Logout</Link> 
+                    </li>
                 </ul>
-                <AdminButton id="adminButton" />
+                <div className="changeBut">
+                    <AdminButton id="adminButton" />
+                </div>
+                <div className="changeBut">
+                    <LogoutButton />
+                </div>
             </nav>
         </>
     )

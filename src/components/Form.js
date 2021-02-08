@@ -1,189 +1,197 @@
-import React, { useState, useEffect } from "react";
-import Select from 'react-select';
-import { Form, Col, Container, Row } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, {useState} from "react"
+import Select from 'react-select'
 
-const optionsServices = [
-  { value: "lorem", label: "Lorem" },
-  { value: "ipsum", label: "ipsum" },
-  { value: "dolor", label: "dolor" },
-  { value: "sitamet", label: "sit amet" }
-]
+class Form extends React.Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             first_name: '',
+             last_name: '',
+             phonenumber: '',
+             email: '',
+             address: '',
+             notes: '',
+             service_id: null,
+             suburb_id: null,
+             suburbs: [],
+             optionsServices: [],
+             postcode: '4000',
+             date: ''
+        }
+    }
 
-class BookingForm extends React.Component {
-  constructor(props) {
-    super(props)
 
+    handleOptions = selectedService => {
+        this.setState({service_id: selectedService.value})
+    }
 
-    this.state = {
-      firstname: '',
-      lastname: '',
-      phone: '',
-      email: '',
-      address: '',
-      notes: '',
-      selectedService: null,
-      suburb: '',
-      suburbs: [],
-      services: [],
-      postcode: '4000',
-      date: ''
+    handleSuburb = selectedSuburb => {
+      this.setState({suburb_id: selectedSuburb.value})
     }
   }
 
-  //   this.state = {
-  //       firstname: '',
-  //       lastname: '',
-  //       phone: '',
-  //       email: '',
-  //       address: '',
-  //       notes: '',
-  //       selectedService: null,
-  //       suburb: 'lorem',
-  //       postcode: '4000',
-  //       date: ''
-  //   }
-  // }
-
-handleChange = (event) => {
-  let name = event.target.name
-  let value = event.target.value
-  this.setState({ [name]: value })
-}
-
-handleOptions = selectedService => {
-  this.setState({ selectedService })
-  console.log(selectedService)
-}
-
-handleSubmit = (event) => {
-  event.preventDefault()
-  let ph = this.state.phone
-  if (!Number(ph)) {
-    alert("Phone must be a number")
-  }
-  console.log(this.state)
-}
-
-componentDidMount() {
-  fetch('https://larryslawncare.herokuapp.com/suburbs')
-    .then(data => data.json())
-    .then(result => this.setState({ suburbs: result }))
-}
-
-componentDidMount() {
-  fetch('https://larryslawncare.herokuapp.com/services')
-    .then(data => data.json())
-    .then(result => {
-      // recreating the services list array to work with the multi select package
-      let newResultList = result.slice()
-      let array = []
-      newResultList.forEach(element => {
-        console.log(element)
-        let obj = {}
-        obj.label = element.service_name
-        obj.value = element.id
-        array.push(obj)
+<<<<<<< HEAD
+    handleSubmit = (event) => {
+      event.preventDefault()
+      let ph = this.state.phonenumber
+      if (!Number(ph)) {
+          alert("Phone must be a number")
+      }
+      fetch('https://larryslawncare.herokuapp.com/bookings', {
+        method: 'POST',
+        body: JSON.stringify(this.state),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
-      this.setState({ services: array })
-    })
-}
+      .then(response => {
+          response.json()
+      })
+      .then((data) => console.log(data))
+      .catch(() => alert("Please fill in all fields"))
+    }
 
+    componentDidMount() {
+      fetch('https://larryslawncare.herokuapp.com/services')
+        .then(result => result.json())
+        .then(data => {
+          let array = []
+          data.forEach((element) => {
+            array.push({
+              value: element.id,
+              label: element.service_name
+            })
+          })
+          this.setState({optionsServices: array})
+          console.log(array)
 
-render() {
-  const { selectedService } = this.state
-  return (
-    <div className="Form">
-      <form onSubmit={this.handleSubmit}>
-        <Container>
-          <Form>
-            <Row>
-              <Col className="leftCol">
-                <div className="leftpart">
-                  <Form.Group controlId="formFirstName">
-                    <Form.Label htmlFor="firstname">First Name</Form.Label>
-                    <Form.Control className="u-full-width" type="text" name="firstname" id="firstname" onChange={this.handleChange} />
-                  </Form.Group>
+          fetch('https://larryslawncare.herokuapp.com/suburbs')
+            .then(result => result.json())
+            .then (data => {
+              let suburbs = []
+              data.forEach((element) => {
+                suburbs.push({
+                  value: element.id,
+                  label: element.name
+                })
+              })
+              this.setState({suburbs: suburbs})
+              console.log(suburbs)
+            })
+        })
+    }
 
-                  <Form.Group className="input_field">
-                    <Form.Label htmlFor="lastname">Last Name</Form.Label>
-                    <Form.Control className="u-full-width" type="text" name="lastname" id="lastname" onChange={this.handleChange} />
-                  </Form.Group>
+  render() {
+    const { selectedService } = this.state
+    return (
+      <div className="bookingForm">
+        <form onSubmit={this.handleSubmit}>
+          <div className="container">
+            <div className="row">
+              <div className="one-half column">
+                <label htmlFor="first_name">
+                  First Name
+                </label>
+                <input 
+                  className="u-full-width"
+                  type="text" 
 
-                  <Form.Group className="input_field">
-                    <Form.Label htmlFor="phone">Phone</Form.Label>
-                    <Form.Control className="u-full-width" type="tel" name="phone" id="phone" onChange={this.handleChange} />
-                  </Form.Group>
-
-                  <Form.Group className="input_field">
-                    <Form.Label htmlFor="email">Email</Form.Label>
-                    <Form.Control className="u-full-width" type="email" name="email" id="email" onChange={this.handleChange} />
-                  </Form.Group>
-
-                  <Form.Group className="input_field">
-                    <Form.Label htmlFor="address">Address</Form.Label>
-                    <Form.Control className="u-full-width" type="text" name="address" id="address" onChange={this.handleChange} />
-                  </Form.Group>
-
-                  <Row>
-                    <Col>
-                      <Form.Group className="two-half-column">
-                        <Form.Label htmlFor="suburb">Suburb</Form.Label>
-                        <Form.Control as="select" className="suburb-width" onChange={this.handleChange} name="suburb" >
-                          <option value="lorem">Lorem</option>
-                          <option value="ipsum">ipsum</option>
-                        </Form.Control>
-                      </Form.Group>
-                    </Col>
-                    <Col>
-                      <Form.Group className="one-half column">
-                        <Form.Label htmlFor="postcode">Postcode </Form.Label>
-                        <Form.Control as="select"
-                          className="postcode-width"
-                          onChange={this.handleChange}
-                          name="postcode"
-                        >
-                          <option value="4000">4000</option>
-                          <option value="4001">4001</option>
-                        </Form.Control>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-
-              <Col className="rightCol">
-                <div className="rightpart">
-                  <Form.Group className="input_field2">
-                    <Form.Label htmlFor="services">Services required</Form.Label>
-                    <Select
-                      className="service-width"
-                      onChange={this.handleOptions}
-                      name="selectedService"
-                      options={optionsServices}
-                      placeholder="Select all services required"
-                      isMulti />
-                  </Form.Group>
-
-                  <Form.Group className="input_field2">
-                    <Form.Label htmlFor="date">Date</Form.Label>
-                    <Form.Control className="date-width" type="date" name="date" id="date" onChange={this.handleChange} />
-                  </Form.Group>
-
-                  <Form.Group className="input_field2">
-                    <Form.Label htmlFor="notes">Notes</Form.Label>
-                    <textarea className="u-full-width" name="notes" onChange={this.handleChange} />
-                    <Form.Control className="button-primary" type="submit" value="Submit" />
-                  </Form.Group>
-                </div>
-              </Col>
-            </Row>
-          </Form>
-        </Container>
-      </form>
-    </div>
-  )
-}
-}
+                  name="first_name" 
+                  id="first_name"
+                  onChange={this.handleChange}
+                />
+                <label htmlFor="last_name">
+                  Last Name
+                </label>
+                <input 
+                  className="u-full-width"
+                  type="text" 
+                  name="last_name"  
+                  id="last_name" 
+                  onChange={this.handleChange}
+                />
+                <label htmlFor="phonenumber">
+                  Phone
+                </label>
+                <input 
+                  className="u-full-width"
+                  type="tel" 
+                  name="phonenumber"  
+                  id="phonenumber" 
+                  onChange={this.handleChange}
+                />
+                <label htmlFor="email">
+                  Email
+                </label>
+                <input 
+                className="u-full-width"
+                type="email" 
+                name="email"  
+                id="email"
+                  onChange={this.handleChange} 
+                />
+                <label htmlFor="address">
+                  Address
+                </label>
+                <input 
+                  className="u-full-width"
+                  type="text" 
+                  name="address"  
+                  id="address"
+                  onChange={this.handleChange} 
+                />
+                <label htmlFor="suburb_id">
+                  Suburb
+                </label>
+                <Select 
+                    className="u-full-width"
+                    onChange={this.handleSuburb}
+                    name="suburb_id"
+                    options={this.state.suburbs}
+                >
+                </Select>
+              </div>
+              <div className="one-half column">
+                <label htmlFor="service_id">
+                  Services required
+                </label>
+                <Select 
+                    className="u-full-width"
+                    onChange={this.handleOptions}
+                    name="service_id"
+                    options={this.state.optionsServices}
+                    placeholder="Select all services required"
+                />
+                <label htmlFor="booking_date">
+                      Date
+                    </label>
+                    <input 
+                      className="u-full-width"
+                      type="date" 
+                      name="booking_date"  
+                      id="booking_date" 
+                      onChange={this.handleChange}
+                    />
+                <label htmlFor="notes">
+                  Notes
+                </label>
+                <textarea 
+                    className="u-full-width" 
+                    name="notes"
+                    onChange={this.handleChange}
+                /> 
+                <input 
+                    className="button-primary" 
+                    type="submit" 
+                    value="Submit" 
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    )
+  }
 
 export default BookingForm;

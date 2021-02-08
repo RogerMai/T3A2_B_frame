@@ -46,6 +46,8 @@ function App() {
         <Route path='/booking' exact component={Booking} />
         {/* <Route path='/admin' exact component={AdminLogin} /> */}
         <Route path='/admin/bookings' component={AdminBookings} />
+        <Route exact path="/admin/bookings/:id/edit" render={props => <EditForm {...props} records={records} />} />
+        <Route exact path="/admin/bookings/:id" render={props => <View {...props} records={records} />} />
         <Route exact path={"/"}
           render={props => (
             <Home {...props}

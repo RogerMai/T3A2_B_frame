@@ -4,7 +4,6 @@ import './Booking.css';
 
 function Booking() {
     return (
-
         <div className="booking-bg">
             <div className="bookingCard">
                 <div className="bookingContainer">

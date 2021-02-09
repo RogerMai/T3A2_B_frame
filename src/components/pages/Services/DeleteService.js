@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import API from '../../config/api'
+import { Form, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './DeleteService.css';
 
 export default function DeleteService(props) {
 
@@ -40,14 +43,33 @@ export default function DeleteService(props) {
 
 
     return (
-        <>
-        <h1>Delete Service</h1>
-        <h4>Are you sure you want to delete this service?</h4>
-        <h5>Service name: {serviceInfo.service_name}</h5>
-        <h5>Price: {serviceInfo.price}</h5>
-        <button onClick={() => handleDelete(serviceInfo.id)}>Delete</button>
-        <br></br>
-        <Link to="/services">Back to Services</Link>
-        </>
+        <div className="deleteService-bg">
+            <div className="deleteServiceCard">
+                <div className="deleteServiceContainer">
+                    <Col className="deleteService-column">
+                        <Form className="deleteService-form">
+                            <div className="deleteService-h1">
+                                <h1>Delete Service</h1>
+                            </div>
+                            <Form.Text className="deleteService-h4">
+                                <h4>Are you sure you want to delete this service?</h4>
+                            </Form.Text>
+                            <Form.Text className="deleteService-h51">   
+                                <p>Service name: </p>
+                            </Form.Text>
+                            <Form.Text className="deleteService-h52">
+                                <h5>{serviceInfo.service_name}</h5>
+                            </Form.Text>
+                            <Form.Text className="deleteService-h53">
+                                <h5>Price: $ {serviceInfo.price}</h5>
+                            </Form.Text> 
+                                <button id="deleteServiceButton" onClick={() => handleDelete(serviceInfo.id)}>Delete</button>
+                                
+                            <Link to="/services" className="backservice">Back to Services</Link>
+                        </Form>
+                    </Col>
+                </div>
+            </div>
+        </div>
     )
 }

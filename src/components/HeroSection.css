@@ -57,9 +57,9 @@ video {
     margin-left: 4px;
 }
 
-.b_services {
+#b_services {
     text-decoration: none;
-    padding: 15px 55px;
+    padding: 15px 40px;
     border-radius: 4px;
     outline: none;
     border: 3px solid #fff;
@@ -67,18 +67,20 @@ video {
     color: #fff;
     cursor: pointer;
     background-color: transparent;
-    /* display: flex; */
+    margin: 2px;
+    
 }
 
-.b_services:hover {
-    padding: 18px 58px;
+#b_services:hover {
+    padding: 18px 46px;
     border: none;
     color: #000;
     background-color: #84dbc2;
 
 }
 
-.b_booking {
+#b_booking {
+    text-decoration: none;
     padding: 18px 40px;
     border-radius: 4px;
     outline: none;
@@ -87,9 +89,10 @@ video {
     color: #000;
     cursor: pointer;
     background-color: #fff;
+    margin: 2px;
 }
 
-.b_booking:hover {
+#b_booking:hover {
     padding: 15px 37px;
     border: 3px solid #fff;
     color: #fff;
@@ -109,7 +112,7 @@ video {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .hero-container  > h1 {
         font-size: 50px;
         margin-top: -100px;
@@ -173,8 +176,9 @@ video {
         text-decoration: none;
     }
    
-    .b_services {
-        padding: 12px 52px;
+    #b_services {
+        text-decoration: none;
+        padding: 12px 40px;
         border-radius: 4px;
         outline: none;
         border: 3px solid #fff;
@@ -184,16 +188,18 @@ video {
         background-color: transparent;
     }
     
-    .b_services:hover {
-        padding: 12px 45px;
+    #b_services:hover {
+        text-decoration: none;
+        padding: 15px 43px;
         border: none;
         color: #000;
         background-color: #84dbc2;
     
     }
     
-    .b_booking {
-        padding: 15px 40px;
+    #b_booking {
+        text-decoration: none;
+        padding: 15px 41px;
         border-radius: 4px;
         outline: none;
         border: none;
@@ -203,8 +209,9 @@ video {
         background-color: #fff;
     }
     
-    .b_booking:hover {
-        padding: 15px 37px;
+    #b_booking:hover {
+        text-decoration: none;
+        padding: 12px 38px;
         border: 3px solid #fff;
         color: #fff;
         background-color: #276755;

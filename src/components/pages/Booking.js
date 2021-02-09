@@ -1,10 +1,9 @@
 import React from 'react';
-import Form from '../Form.js'
+import BookingForm from '../BookingForm.js'
 import './Booking.css';
 
 function Booking() {
     return (
-
         <div className="booking-bg">
             <div className="bookingCard">
                 <div className="bookingContainer">
@@ -12,7 +11,7 @@ function Booking() {
                         <h1 className="bookingH1">BOOK A SERVICE</h1>
                     </div>
                     <div className="booking-form">
-                        <Form />
+                        <BookingForm />
                     </div>
                 </div>
             </div>

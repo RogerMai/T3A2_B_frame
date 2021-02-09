@@ -3,6 +3,7 @@ import Select from 'react-select'
 import { Form, Col, Container, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 class BookingForm extends React.Component {
   constructor(props) {
     super(props)
@@ -93,110 +94,124 @@ class BookingForm extends React.Component {
     return (
       <div className="bookingForm">
         <form onSubmit={this.handleSubmit}>
-          <div className="container">
-            <div className="row">
-              <div className="one-half column">
-                <label htmlFor="first_name">
-                  First Name
-                </label>
-                <input
-                  className="u-full-width"
-                  type="text"
+          <Container className="container">
+            <Form>
+              <Row>
+                <Col className="leftCol">
+                  <div className="left-column">
+                    <Form.Group>
+                      <Form.Label htmlFor="first_name">First Name</Form.Label>
+                      <Form.Control
+                        className="u-full-width"
+                        type="text"
 
-                  name="first_name"
-                  id="first_name"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="last_name">
-                  Last Name
-                </label>
-                <input
-                  className="u-full-width"
-                  type="text"
-                  name="last_name"
-                  id="last_name"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="phonenumber">
-                  Phone
-                </label>
-                <input
-                  className="u-full-width"
-                  type="tel"
-                  name="phonenumber"
-                  id="phonenumber"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="email">
-                  Email
-                </label>
-                <input
-                  className="u-full-width"
-                  type="email"
-                  name="email"
-                  id="email"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="address">
-                  Address
-                </label>
-                <input
-                  className="u-full-width"
-                  type="text"
-                  name="address"
-                  id="address"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="suburb_id">
-                  Suburb
-                </label>
-                <Select 
-                  id="suburbs"
-                    className="u-full-width"
-                    onChange={this.handleSuburb}
-                    name="suburb_id"
-                    options={this.state.suburbs}
-                    >
-                </Select>
-              </div>
-              <div className="one-half column">
-                <label htmlFor="service_id">
-                  Services required
-                </label>
-                <Select 
-                    id="services"
-                    className="u-full-width"
-                    onChange={this.handleOptions}
-                    name="service_id"
-                    options={this.state.optionsServices}
-                    placeholder="Select all services required"
+                        name="first_name"
+                        id="first_name"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label htmlFor="last_name">Last Name</Form.Label>
+                      <Form.Control
+                        className="u-full-width"
+                        type="text"
+                        name="last_name"
+                        id="last_name"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label htmlFor="phonenumber">
+                        Phone
+                      </Form.Label>
+                      <Form.Control
+                        className="u-full-width"
+                        type="tel"
+                        name="phonenumber"
+                        id="phonenumber"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label htmlFor="email">Email</Form.Label>
+                      <Form.Control
+                        className="u-full-width"
+                        type="email"
+                        name="email"
+                        id="email"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label htmlFor="address">Address</Form.Label>
+                      <Form.Control
+                        className="u-full-width"
+                        type="text"
+                        name="address"
+                        id="address"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label htmlFor="suburb_id">Suburb</Form.Label>
+                      <Select 
+                        id="suburbs"
+                          className="u-full-width"
+                          onChange={this.handleSuburb}
+                          name="suburb_id"
+                          options={this.state.suburbs}
+                          >
+                      </Select>
+                    </Form.Group>
+                  </div>
+                </Col>
+                <Col> 
+                  <div className="one-half column">
+                    <Form.Group>
+                      <Form.Label htmlFor="service_id">
+                        Services required
+                      </Form.Label>
+                      <Select 
+                          id="services"
+                          className="u-full-width"
+                          onChange={this.handleOptions}
+                          name="service_id"
+                          options={this.state.optionsServices}
+                          placeholder="Select all services required"
+                          />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label htmlFor="booking_date">
+                        Date
+                          </Form.Label>
+                      <Form.Control
+                        className="u-full-width"
+                        type="date"
+                        name="booking_date"
+                        id="booking_date"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Label htmlFor="notes">
+                        Notes
+                      </Form.Label>
+                      <textarea
+                        className="u-full-width"
+                        name="notes"
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Control
+                      className="button-primary"
+                      type="submit"
+                      value="Submit"
                     />
-                <label htmlFor="booking_date">
-                  Date
-                    </label>
-                <input
-                  className="u-full-width"
-                  type="date"
-                  name="booking_date"
-                  id="booking_date"
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="notes">
-                  Notes
-                </label>
-                <textarea
-                  className="u-full-width"
-                  name="notes"
-                  onChange={this.handleChange}
-                />
-                <input
-                  className="button-primary"
-                  type="submit"
-                  value="Submit"
-                />
-              </div>
-            </div>
-          </div>
+                  </div>
+                </Col>
+              </Row>  
+            </Form>    
+          </Container>
         </form>
       </div>
     )

@@ -27,14 +27,12 @@ export default class Login extends Component {
         const { username, password, } = this.state;
 
         axios
-        
             .post("http://larryslawncare.herokuapp.com/sign_in",
-            // .post(`${API}sign_in`,
+            
                 {
                     username: username,
                     password: password,
                 },
-               
             )
             .then(response => {
                 
@@ -46,6 +44,7 @@ export default class Login extends Component {
             })
             .catch(error => {
                 console.log("login error", error);
+                alert("Username or Password incorrect! Please try again.")
             });
         event.preventDefault();
     }

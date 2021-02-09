@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './App.css';
 import Navbar from './components/Navbar'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -6,8 +6,10 @@ import Contact from './components/pages/Contact/Contact';
 import Home from './components/pages/Home';
 import Services from './components/pages/Services/Services';
 import Booking from './components/pages/Booking';
+import EditBooking from './components/pages/EditBooking';
 import AdminLogin from './components/pages/Admin';
 import AdminBookings from './components/pages/AdminBookings'
+import View from './components/pages/ViewBooking';
 import NewService from './components/pages/Services/NewService'
 import EditService from './components/pages/Services/EditService'
 import DeleteService from './components/pages/Services/DeleteService'
@@ -35,7 +37,7 @@ function App() {
   // props are destructured in the Router to allow for use in services component
   return (
     <Router>
-      <Navbar />
+      <Navbar loggedInStatus={loggedInStatus} />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
@@ -45,9 +47,9 @@ function App() {
         <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} setServices={setServices} />} />
         <Route path='/booking' exact component={Booking} />
         {/* <Route path='/admin' exact component={AdminLogin} /> */}
-        <Route path='/admin/bookings' component={AdminBookings} />
-        <Route exact path="/admin/bookings/:id/edit" render={props => <EditForm {...props} records={records} />} />
-        <Route exact path="/admin/bookings/:id" render={props => <View {...props} records={records} />} />
+        <Route exact path='/admin/bookings' component={AdminBookings} />
+        <Route exact path="/admin/bookings/:id/edit" render={props => <EditBooking {...props} />} />
+        <Route exact path="/admin/bookings/:id" render={props => <View {...props} />} />
         <Route exact path={"/"}
           render={props => (
             <Home {...props}

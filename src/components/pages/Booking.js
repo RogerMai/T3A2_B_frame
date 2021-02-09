@@ -1,5 +1,5 @@
 import React from 'react';
-import BookingForm from '../Form.js'
+import BookingForm from '../BookingForm.js'
 import './Booking.css';
 
 function Booking() {

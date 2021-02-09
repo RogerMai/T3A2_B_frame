@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import API from '../../config/api'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './DeleteService.css';
+import Spinner from '../../layout/Spinner.js'
 
 export default function DeleteService(props) {
 
@@ -41,7 +42,7 @@ export default function DeleteService(props) {
     }, [])
 
 
-    return (
+    return serviceInfo.service_name ? (
         <div className="deleteService-bg">
             <div className="deleteServiceCard">
                 <div className="deleteServiceContainer">
@@ -58,5 +59,5 @@ export default function DeleteService(props) {
                 </div>
             </div>
         </div>
-    )
+    ) : <Spinner />
 }

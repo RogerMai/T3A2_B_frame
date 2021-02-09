@@ -28,6 +28,7 @@ function App() {
   }
 
   useEffect(() => {
+    console.log("dfghj")
     // fetch list of services from Rails API
     fetch(`${API}services`)
       .then(response => response.json())

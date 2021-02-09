@@ -22,6 +22,26 @@ import { Link } from 'react-router-dom'
 
 const Records = (props) => {
 
+  console.log(props.suburbs)
+
+  const setService = (service_id) => {
+      let service = props.services.find(element => service_id == element.id)
+      if (service == undefined) {
+        return ""
+      } else {
+        return service.service_name
+      }
+  }
+
+  const setSuburb = (suburb_id) => {
+    let suburb = props.suburbs.find(element => suburb_id == element.id)
+    if (suburb == undefined) {
+      return ""
+    } else {
+      return suburb.name
+    }
+  }
+
   const handleClick = (id) => {
     props.deleteRecord(id)
   }
@@ -53,7 +73,7 @@ const Records = (props) => {
                       </Link>
                   </td>
                   <td>
-                      <p>{data.address}, {data.suburb_id}</p>
+                      <p>{data.address}, {setSuburb(data.suburb_id)}</p>
                   </td>
                   <td>
                       <p>{data.phonenumber}</p>
@@ -62,7 +82,7 @@ const Records = (props) => {
                       <p>{data.email}</p>
                   </td>
                   <td>
-                      <p>{data.service_id}</p>
+                      <p>{setService(data.service_id)}</p>
                   </td>
                   <td>
                       <p>{data.notes}</p>
@@ -73,7 +93,7 @@ const Records = (props) => {
                       </Link>
                   </td>
                   <td>
-                      <button onClick={() => handleClick(data.id)}>Delete</button>
+                      <button id="delete" onClick={() => handleClick(data.id)}>Delete</button>
                   </td>
               </tr>
           ))}

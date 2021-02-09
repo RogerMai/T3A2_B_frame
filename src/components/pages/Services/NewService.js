@@ -27,21 +27,19 @@ export default function NewService(props) {
         }).then(result => {
             if (result.status === 201) {
                 return result.json()
-                // const currentListOfServices = [...services]
-                // currentListOfServices.push(newService)
-                // props.setServices("New list of services")
-                // props.history.push("/services")
-                // alert("The service has been successfully added")
             } else {
                 alert("All fields must be completed to proceed")
+                throw new Error()
             }
         }).then(service => {
-            const currentListOfServices = [...props.services]
-            currentListOfServices.push(service)
-            alert("The service has been successfully added")
-            props.setServices(currentListOfServices)
-            props.history.push("/services")
-        })
+            if (service !== null) {
+                const currentListOfServices = [...props.services]
+                currentListOfServices.push(service)
+                alert("The service has been successfully added")
+                props.setServices(currentListOfServices)
+                props.history.push("/services")
+            }
+        }).catch(() => {})
     }
 
     const onChange = (e) => {

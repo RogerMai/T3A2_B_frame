@@ -150,25 +150,27 @@ class BookingForm extends React.Component {
                 <label htmlFor="suburb_id">
                   Suburb
                 </label>
-                <Select
-                  className="u-full-width"
-                  onChange={this.handleSuburb}
-                  name="suburb_id"
-                  options={this.state.suburbs}
-                >
+                <Select 
+                  id="suburbs"
+                    className="u-full-width"
+                    onChange={this.handleSuburb}
+                    name="suburb_id"
+                    options={this.state.suburbs}
+                    >
                 </Select>
               </div>
               <div className="one-half column">
                 <label htmlFor="service_id">
                   Services required
                 </label>
-                <Select
-                  className="u-full-width"
-                  onChange={this.handleOptions}
-                  name="service_id"
-                  options={this.state.optionsServices}
-                  placeholder="Select all services required"
-                />
+                <Select 
+                    id="services"
+                    className="u-full-width"
+                    onChange={this.handleOptions}
+                    name="service_id"
+                    options={this.state.optionsServices}
+                    placeholder="Select all services required"
+                    />
                 <label htmlFor="booking_date">
                   Date
                     </label>

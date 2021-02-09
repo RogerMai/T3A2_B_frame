@@ -3,8 +3,8 @@
 ### Repository for planning tools
 https://github.com/Leanne2603/T3A2_Full_Stack-App_Part-A
 
-### Repository for front end application 
-https://github.com/Leanne2603/T3A2_B_frame/tree/main/src
+### Repository for back end Rails API 
+https://github.com/Leanne2603/Larrys-Lawncare-API-Backend
 
 ### Deployed Frontend Application URL using Netlify
 https://larryslawncare.netlify.app/

@@ -21,6 +21,7 @@ import { Redirect } from "react-router-dom";
 function App() {
   // set the services to be passed down as props
   const [services, setServices] = useState([])
+  const [suburbs, setSuburbs] = useState([])
   const [loggedInStatus, setLoggedInStatus] = useState("NOT_LOGGED_IN");
 
   const handleLogin = (data) => {
@@ -31,7 +32,14 @@ function App() {
     // fetch list of services from Rails API
     fetch(`${API}services`)
       .then(response => response.json())
-      .then(data => setServices(data));
+      .then(data => {
+        setServices(data)
+      });
+      fetch(`${API}suburbs`)
+      .then(response => response.json())
+      .then(data => {
+        setSuburbs(data)
+      })
   }, [])
 
   // props are destructured in the Router to allow for use in services component
@@ -47,7 +55,7 @@ function App() {
         <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} setServices={setServices} />} />
         <Route path='/booking' exact component={Booking} />
         {/* <Route path='/admin' exact component={AdminLogin} /> */}
-        <Route exact path='/admin/bookings' component={AdminBookings} />
+        <Route exact path='/admin/bookings' render={props => <AdminBookings {...props} suburbs={suburbs} services={services} />} />
         <Route exact path="/admin/bookings/:id/edit" render={props => <EditBooking {...props} />} />
         <Route exact path="/admin/bookings/:id" render={props => <View {...props} />} />
         <Route exact path={"/"}

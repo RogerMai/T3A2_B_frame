@@ -2,7 +2,7 @@
     --primary: #84dbc2;
   }
   
-  #b_Logout {
+  #logout-Bu {
     padding: 8px 20px;
     border-radius: 4px;
     outline: none;
@@ -13,7 +13,7 @@
     background-color: #fff;
   }
   
-  #b_Logout:hover {
+  #logout-Bu:hover {
     padding: 6px 18px;
     transition: all 0.3s ease-out;
     background-color: #84dbc2;

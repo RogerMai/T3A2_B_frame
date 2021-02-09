@@ -1,7 +1,7 @@
-import React, {useState} from "react"
-import Select from 'react-select'
+import React from "react"
+import Select from 'react-select' 
 
-class Form extends React.Component {
+class BookingForm extends React.Component {
     constructor(props) {
         super(props)
     
@@ -17,7 +17,7 @@ class Form extends React.Component {
              suburbs: [],
              optionsServices: [],
              postcode: '4000',
-             date: ''
+             booking_date: ''
         }
     }
 
@@ -29,15 +29,19 @@ class Form extends React.Component {
     handleSuburb = selectedSuburb => {
       this.setState({suburb_id: selectedSuburb.value})
     }
-  }
 
-<<<<<<< HEAD
+    handleChange = (event) => {
+      let name = event.target.name
+      let value = event.target.value
+      this.setState({[name]: value})
+  }
+    
     handleSubmit = (event) => {
       event.preventDefault()
-      let ph = this.state.phonenumber
-      if (!Number(ph)) {
-          alert("Phone must be a number")
-      }
+      // let ph = this.state.phonenumber
+      // if (!Number(ph)) {
+      //   alert("Phone must be a number")
+      // }
       fetch('https://larryslawncare.herokuapp.com/bookings', {
         method: 'POST',
         body: JSON.stringify(this.state),
@@ -46,29 +50,29 @@ class Form extends React.Component {
         }
       })
       .then(response => {
-          response.json()
+        return response.json()
       })
       .then((data) => console.log(data))
       .catch(() => alert("Please fill in all fields"))
     }
-
+    
     componentDidMount() {
       fetch('https://larryslawncare.herokuapp.com/services')
-        .then(result => result.json())
-        .then(data => {
-          let array = []
-          data.forEach((element) => {
-            array.push({
-              value: element.id,
-              label: element.service_name
-            })
+      .then(result => result.json())
+      .then(data => {
+        let array = []
+        data.forEach((element) => {
+          array.push({
+            value: element.id,
+            label: element.service_name
           })
-          this.setState({optionsServices: array})
-          console.log(array)
-
-          fetch('https://larryslawncare.herokuapp.com/suburbs')
-            .then(result => result.json())
-            .then (data => {
+        })
+        this.setState({optionsServices: array})
+        console.log(array)
+        
+        fetch('https://larryslawncare.herokuapp.com/suburbs')
+        .then(result => result.json())
+        .then (data => {
               let suburbs = []
               data.forEach((element) => {
                 suburbs.push({
@@ -79,13 +83,13 @@ class Form extends React.Component {
               this.setState({suburbs: suburbs})
               console.log(suburbs)
             })
-        })
-    }
-
-  render() {
-    const { selectedService } = this.state
-    return (
-      <div className="bookingForm">
+          })
+        }
+        
+        render() {
+          const { selectedService } = this.state
+          return (
+            <div className="bookingForm">
         <form onSubmit={this.handleSubmit}>
           <div className="container">
             <div className="row">
@@ -96,11 +100,11 @@ class Form extends React.Component {
                 <input 
                   className="u-full-width"
                   type="text" 
-
+                  
                   name="first_name" 
                   id="first_name"
                   onChange={this.handleChange}
-                />
+                  />
                 <label htmlFor="last_name">
                   Last Name
                 </label>
@@ -110,7 +114,7 @@ class Form extends React.Component {
                   name="last_name"  
                   id="last_name" 
                   onChange={this.handleChange}
-                />
+                  />
                 <label htmlFor="phonenumber">
                   Phone
                 </label>
@@ -120,7 +124,7 @@ class Form extends React.Component {
                   name="phonenumber"  
                   id="phonenumber" 
                   onChange={this.handleChange}
-                />
+                  />
                 <label htmlFor="email">
                   Email
                 </label>
@@ -129,7 +133,7 @@ class Form extends React.Component {
                 type="email" 
                 name="email"  
                 id="email"
-                  onChange={this.handleChange} 
+                onChange={this.handleChange} 
                 />
                 <label htmlFor="address">
                   Address
@@ -140,7 +144,7 @@ class Form extends React.Component {
                   name="address"  
                   id="address"
                   onChange={this.handleChange} 
-                />
+                  />
                 <label htmlFor="suburb_id">
                   Suburb
                 </label>
@@ -149,7 +153,7 @@ class Form extends React.Component {
                     onChange={this.handleSuburb}
                     name="suburb_id"
                     options={this.state.suburbs}
-                >
+                    >
                 </Select>
               </div>
               <div className="one-half column">
@@ -162,7 +166,7 @@ class Form extends React.Component {
                     name="service_id"
                     options={this.state.optionsServices}
                     placeholder="Select all services required"
-                />
+                    />
                 <label htmlFor="booking_date">
                       Date
                     </label>
@@ -172,7 +176,7 @@ class Form extends React.Component {
                       name="booking_date"  
                       id="booking_date" 
                       onChange={this.handleChange}
-                    />
+                      />
                 <label htmlFor="notes">
                   Notes
                 </label>
@@ -180,12 +184,12 @@ class Form extends React.Component {
                     className="u-full-width" 
                     name="notes"
                     onChange={this.handleChange}
-                /> 
+                    /> 
                 <input 
                     className="button-primary" 
                     type="submit" 
                     value="Submit" 
-                />
+                    />
               </div>
             </div>
           </div>
@@ -193,5 +197,6 @@ class Form extends React.Component {
       </div>
     )
   }
+}
 
 export default BookingForm;

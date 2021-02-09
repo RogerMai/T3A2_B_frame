@@ -1,24 +1,23 @@
-import React, { Component } from 'react'
+import React from "react";
 
-export default class Test extends Component {
-    constructor(props) {
-        super(props);
+const Dashboard = (props) => {
+  const { loggedInStatus } = props;
 
-        this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    }
+  if (loggedInStatus === "NOT_LOGGED_IN") {
+    window.location.href = "/";
+  }
 
-    handleLogoutClick() {
-      window.location.href = "/";
-    }
+  const handleLogoutClick = () => {
+    window.location.href = "/";
+  }
 
-    render() {
-        return (
-            <div>
-                <h1>Test</h1>
+  return (
+    <div>
+      <h1>Test</h1>
+      
+    
+    </div>
+  )
+};
 
-                {/* {this.props.loggedInStatus === "LOGGED_IN" && <button onClick={this.handleLogoutClick}>Log out!!</button>} */}
-
-            </div>
-        );
-    }
-}
+export default Dashboard;

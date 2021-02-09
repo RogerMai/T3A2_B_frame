@@ -50,6 +50,16 @@ export default function NewService(props) {
         setNewService({ ...newService, [serviceDetails]: e.target.value })
     }
 
+    const loggedInStatus = (props) => {
+
+        if (loggedInStatus === "NOT_LOGGED_IN") {
+      window.location.href = "/";
+    }}
+  
+    const handleLogoutClick = () => {
+      window.location.href = "/";
+    }
+
     return (
         <div className="newService-bg">
             <div className="newServiceCard">

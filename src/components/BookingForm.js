@@ -149,6 +149,7 @@ class BookingForm extends React.Component {
                   Suburb
                 </label>
                 <Select 
+                  id="suburbs"
                     className="u-full-width"
                     onChange={this.handleSuburb}
                     name="suburb_id"
@@ -161,6 +162,7 @@ class BookingForm extends React.Component {
                   Services required
                 </label>
                 <Select 
+                    id="services"
                     className="u-full-width"
                     onChange={this.handleOptions}
                     name="service_id"

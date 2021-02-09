@@ -54,7 +54,7 @@ function EditBooking(props) {
     })
     .then(response => {
         if (response.status == 204) {
-            props.history.push("/bookings")
+            props.history.push("/admin/bookings")
         } else {
           alert("Please fill in all fields")
         }
@@ -183,6 +183,7 @@ function EditBooking(props) {
                 Suburb
               </label>
               <Select 
+                  id="suburbselect"
                   className="u-full-width"
                   onChange={handleSuburb}
                   name="suburb_id"
@@ -196,6 +197,7 @@ function EditBooking(props) {
                 Services required
               </label>
               <Select 
+                  id="serviceselect"
                   className="u-full-width"
                   onChange={handleOptions}
                   name="service_id"

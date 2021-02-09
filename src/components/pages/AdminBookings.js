@@ -10,7 +10,10 @@ function AdminBookings(props) {
     useEffect(() => {
       fetch('https://larryslawncare.herokuapp.com/bookings')
         .then(res => res.json())
-        .then(data => setRecords(data))
+        .then(data => {
+          setRecords(data)
+          console.log(data)
+        })
   }, [])
 
     const deleteRecord = (id) => {
@@ -22,14 +25,13 @@ function AdminBookings(props) {
             let newRecords = [...records]
             newRecords = newRecords.filter(record => record.id != id)
             setRecords(newRecords)
-            console.log(newRecords)
           }
         })
       }
 
     return (
       <>
-        <Records records={records} deleteRecord={deleteRecord}  />
+        <Records records={records} services={props.services} suburbs={props.suburbs} deleteRecord={deleteRecord}  />
       </>
     );
 }

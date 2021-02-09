@@ -1,16 +1,21 @@
-import React from 'react'
-import './LogoutButton.css';
+import React from "react";
 
-const LogoutButton = () => {
-    const handleLogoutClick = () => {
-        window.location.href = "/";
-    }
+const Dashboard = (props) => {
+  const { loggedInStatus } = props;
 
-    return (
-      <div>
-        <button onClick={handleLogoutClick} id="logout-Bu">Log out</button>
-      </div>
-    )
-}
+  if (loggedInStatus === "NOT_LOGGED_IN") {
+    window.location.href = "/";
+  }
 
-export default LogoutButton;
+  const handleLogoutClick = () => {
+    window.location.href = "/";
+  }
+
+  return (
+    <div>
+      <button onClick={handleLogoutClick}>Log out</button>
+    </div>
+  )
+};
+
+export default Dashboard;

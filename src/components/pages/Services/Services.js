@@ -31,8 +31,8 @@ export default function Services(props) {
                                 <tr key={service.id}>
                                     <td>{service.service_name}</td>
                                     <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
-                                    <td><Link to={`/services/${service.id}/edit`}>Edit Service </Link></td>
-                                    <td><Link to={`/services/${service.id}/delete`}> Delete Service</Link></td>
+                                    <td id="edit"><Link to={`/services/${service.id}/edit`}>Edit Service </Link></td>
+                                    <td id="delete"><Link to={`/services/${service.id}/delete`}> Delete Service</Link></td>
                                 </tr>
                             ))}
                         </tbody>

@@ -27,7 +27,7 @@ export default function Services(props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {props.services.map(service => (
+                            {props.services.map(service => service && (
                                 <tr key={service.id}>
                                     <td>{service.service_name}</td>
                                     <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>

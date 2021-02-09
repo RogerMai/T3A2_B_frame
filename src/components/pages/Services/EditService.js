@@ -21,7 +21,7 @@ export default function EditService({setServices, services, match, history, id }
 
     const onSubmit = (e) => {
         let response = {...formInfo}
-        console.log(response) // Checking the response received when submitting
+        // console.log(response) // Checking the response received when submitting
 
         // fetches the API for Rails, formats data into JSON to post to database with checks on result status. Redirects back to the Services page once successfully completed.
         e.preventDefault()
@@ -35,18 +35,21 @@ export default function EditService({setServices, services, match, history, id }
             if (result.status === 201) { // 201 status - success
                 return result.json()
             } else {
-                alert("There has been an error processing this update. Please check the details and try again") // Will return an unprocessible entity error
+                alert("There has been an error processing this update. Please check the details and try again NOTE: Fields can not be blank") // Will return an unprocessible entity error
+                throw new Error()
             }
         }).then(service => {
-            let currentListOfServices = [...services] // cloning the original array
-            let index = currentListOfServices.findIndex(element => element.id === service.id)
-            // currentListOfServices[index] = service
-            currentListOfServices.splice(index, 1, service)
-            setServices(currentListOfServices)
-            alert("Service has been successfully updated")
-            setServices(currentListOfServices) // resetting the state of services
-            history.push("/services") // redirects to /services page
-        })
+            if (service !== null) {
+                let currentListOfServices = [...services] // cloning the original array
+                let index = currentListOfServices.findIndex(element => element.id === service.id)
+                // currentListOfServices[index] = service
+                currentListOfServices.splice(index, 1, service)
+                setServices(currentListOfServices)
+                alert("Service has been successfully updated")
+                setServices(currentListOfServices) // resetting the state of services
+                history.push("/services") // redirects to /services page
+            }
+        }).catch(() => {})
     }
 
     const onChange = (e) => {

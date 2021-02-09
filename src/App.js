@@ -62,7 +62,7 @@ function App() {
           render={props => (
             <Home {...props}
               handleLogin={handleLogin}
-              // handleLogout={handleLogout}
+             
               loggedInStatus={loggedInStatus} />
           )}
         />

@@ -1,0 +1,24 @@
+:root {
+    --primary: #84dbc2;
+  }
+  
+  #logout-Bu {
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    color: #000;
+    cursor: pointer;
+    background-color: #fff;
+  }
+  
+  #logout-Bu:hover {
+    padding: 6px 18px;
+    transition: all 0.3s ease-out;
+    background-color: #84dbc2;
+    color: #fff;
+    border-radius: none;
+    border: 2px solid #84dbc2;
+    transition: all 0.3s ease-out;
+  }

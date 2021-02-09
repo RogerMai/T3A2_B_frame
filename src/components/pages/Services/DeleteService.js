@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import API from '../../config/api'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './DeleteService.css';
 
 export default function DeleteService(props) {
 
@@ -40,14 +42,21 @@ export default function DeleteService(props) {
 
 
     return (
-        <>
-        <h1>Delete Service</h1>
-        <h4>Are you sure you want to delete this service?</h4>
-        <h5>Service name: {serviceInfo.service_name}</h5>
-        <h5>Price: {serviceInfo.price}</h5>
-        <button onClick={() => handleDelete(serviceInfo.id)}>Delete</button>
-        <br></br>
-        <Link to="/services">Back to Services</Link>
-        </>
+        <div className="deleteService-bg">
+            <div className="deleteServiceCard">
+                <div className="deleteServiceContainer">
+                            <div className="deleteService-h1">
+                                <h1>Delete Service</h1>
+                            </div>
+                                <h4>Are you sure you want to delete this service?</h4>
+                                <p>Service name: </p>
+                                <h5>{serviceInfo.service_name}</h5>
+                                <h5>Price: $ {serviceInfo.price}</h5>
+                                <button id="deleteServiceButton" onClick={() => handleDelete(serviceInfo.id)}>Delete</button>
+                                
+                            <Link to="/services" className="backservice">Back to Services</Link>
+                </div>
+            </div>
+        </div>
     )
 }

@@ -58,6 +58,7 @@
   .larrymenu-icon {
     display: none;
   }
+
   
   @media screen and (max-width: 960px) {
     .NavbarItems {
@@ -140,4 +141,10 @@
     #b_admin {
       display: none;
     } 
+
+    #logOut {
+      display: none;
+    }
   }
+
+  

@@ -39,3 +39,132 @@
     font-family: sans-serif;
     font-size: 12px;
 }
+
+.Item-Name {
+    font-size:30px;
+    
+
+}
+
+.serviceContent {
+    font-size: 15.5px;
+    margin-bottom: 80px;
+}
+
+.subarea {
+    overflow: scroll;
+}
+
+.serviceContainer-right {
+    height: 550px;
+    width: 400px;
+    margin-left: 120px;
+}
+
+.newSerButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.delSerBu {
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 960px) {
+    .serviceCard {
+        display: flex;
+        align-items: center;
+        width: 800px;
+        height: 700px;
+        justify-content: center;
+        margin-top: 20px;
+        background-color: #e9e9e9;
+        border-radius: 8px;
+        background-image: linear-gradient(to bottom right, #84dbc2, #103c30);
+        box-shadow: 0px 1px 10px 1px gray;
+    }
+
+    .serviceContainer {
+        padding-top: 20px;
+        max-width: 780px;
+        width: 100%;
+        height: 680px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .serviceCard {
+        display: flex;
+        align-items: center;
+        width: 650px;
+        height: 700px;
+        justify-content: center;
+        margin-top: 20px;
+        background-color: #e9e9e9;
+        border-radius: 8px;
+        background-image: linear-gradient(to bottom right, #84dbc2, #103c30);
+        box-shadow: 0px 1px 10px 1px gray;
+    }
+
+    .serviceContainer {
+        padding-top: 20px;
+        max-width: 630px;
+        width: 100%;
+        height: 680px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .serviceContent {
+        margin-left: 300px;
+        font-size: 12px;
+    }
+
+    .serviceContainer-right {
+        height: 200px;
+        width: 600px;
+        margin-left: 0;
+    }
+
+    .newSerButton {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .serviceCard {
+        display: flex;
+        align-items: center;
+        width: 350px;
+        height: 1100px;
+        justify-content: center;
+        margin-top: 20px;
+        background-color: #e9e9e9;
+        border-radius: 8px;
+        background-image: linear-gradient(to bottom right, #84dbc2, #103c30);
+        box-shadow: 0px 1px 10px 1px gray;
+    }
+
+    .serviceContainer {
+        padding-top: 20px;
+        max-width: 330px;
+        width: 100%;
+        height: 1080px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .serviceContainer-right {
+        height: 300px;
+        width: 300px;
+        margin-left: 0;
+    }
+}

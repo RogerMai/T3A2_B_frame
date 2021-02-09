@@ -99,12 +99,12 @@ class BookingForm extends React.Component {
               <Row>
                 <Col className="leftCol">
                   <div className="left-column">
-                    <Form.Group>
+                    <Form.Group controlId="formFirstName">
                       <Form.Label htmlFor="first_name">First Name</Form.Label>
                       <Form.Control
                         className="u-full-width"
                         type="text"
-
+                        placeholder="First Name"
                         name="first_name"
                         id="first_name"
                         onChange={this.handleChange}
@@ -115,6 +115,7 @@ class BookingForm extends React.Component {
                       <Form.Control
                         className="u-full-width"
                         type="text"
+                        placeholder="Last Name"
                         name="last_name"
                         id="last_name"
                         onChange={this.handleChange}
@@ -127,6 +128,7 @@ class BookingForm extends React.Component {
                       <Form.Control
                         className="u-full-width"
                         type="tel"
+                        placeholder="Phone Number"
                         name="phonenumber"
                         id="phonenumber"
                         onChange={this.handleChange}
@@ -137,6 +139,7 @@ class BookingForm extends React.Component {
                       <Form.Control
                         className="u-full-width"
                         type="email"
+                        placeholder="Example@email.com"
                         name="email"
                         id="email"
                         onChange={this.handleChange}
@@ -147,6 +150,7 @@ class BookingForm extends React.Component {
                       <Form.Control
                         className="u-full-width"
                         type="text"
+                        placeholder="Address"
                         name="address"
                         id="address"
                         onChange={this.handleChange}

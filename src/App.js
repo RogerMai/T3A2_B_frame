@@ -15,7 +15,7 @@ import EditService from './components/pages/Services/EditService'
 import DeleteService from './components/pages/Services/DeleteService'
 import {useState, useEffect} from 'react'
 import API from './components/config/api'
-import DashBoard from './components/pages/DashBoard'
+// import DashBoard from './components/pages/DashBoard'
 import { Redirect } from "react-router-dom";
 
 function App() {
@@ -50,9 +50,11 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
         <Route exact path='/services' render={props => <Services {...props} services={services} loggedInStatus={loggedInStatus} />} />
-        <Route exact path='/services/new' render={props => <NewService {...props} services={services} setServices={setServices} />} />
-        <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} setServices={setServices} />} />
-        <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} setServices={setServices} />} />
+        
+        <Route exact path='/services/new' render={props => <NewService {...props} services={services} setServices={setServices} loggedInStatus={loggedInStatus} />} />
+        <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} setServices={setServices} loggedInStatus={loggedInStatus} />} />
+       
+        <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} setServices={setServices} loggedInStatus={loggedInStatus} />} />
         <Route path='/booking' exact component={Booking} />
         {/* <Route path='/admin' exact component={AdminLogin} /> */}
         <Route exact path='/admin/bookings' render={props => <AdminBookings {...props} suburbs={suburbs} services={services} />} />
@@ -66,11 +68,8 @@ function App() {
               loggedInStatus={loggedInStatus} />
           )}
         />
-        {/* <Route exact path={"/services"}
-          render={props => (
-            <DashBoard {...props} loggedInStatus={loggedInStatus} />
-          )} */}
-        />
+  
+        
         <Route
           exact
           path='/admin'

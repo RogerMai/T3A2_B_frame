@@ -50,7 +50,7 @@ function Navbar(props) {
                     </div>
                 ) : (
                         <div className="changeBut">
-                            <LogoutButton />
+                            <LogoutButton id="logOut" />
                         </div>
                     )}
                 {/* {loggedInStatus === "LOGGED_IN" && (

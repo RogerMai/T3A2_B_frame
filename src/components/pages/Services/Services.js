@@ -13,6 +13,7 @@ export default function Services(props) {
         .then(data => setSuburbs(data));  
     }, [])
 
+    
     // List of services - both customer & admin view. Checks needed on edit/delete/add buttons to see if user is logged in. Services are mapped over and compiled into a table
     return (
         <div className="service-bg">
@@ -31,13 +32,20 @@ export default function Services(props) {
                                 <tr key={service.id}>
                                     <td>{service.service_name}</td>
                                     <td>{service.price === 'Request quote' ? `${service.price}` : `$${service.price}`}</td>
-                                    <td id="edit"><Link to={`/services/${service.id}/edit`}>Edit Service </Link></td>
-                                    <td id="delete"><Link to={`/services/${service.id}/delete`}> Delete Service</Link></td>
+                                    {props.loggedInStatus === "LOGGED_IN" && (
+                                      <td id="edit"><Link to={`/services/${service.id}/edit`}>Edit Service </Link></td>
+                                      )}
+                                    {props.loggedInStatus === "LOGGED_IN" && (
+                                      <td id="delete"><Link to={`/services/${service.id}/delete`}> Delete Service</Link></td>
+                                    )}
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                        <Link to="/services/new">Add a new service</Link>
+                    {props.loggedInStatus === "LOGGED_IN" && (
+                        <Link to={`/services/new`}>Add a New Service</Link>
+                        // <Link to="/services/new">Add a new service</Link>
+                    )}
                     <h3>Check to see if we service your area...</h3>
                     <div>
                         {suburbs.map(suburb => 
@@ -48,3 +56,5 @@ export default function Services(props) {
         </div>
     )
 }
+
+

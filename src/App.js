@@ -49,7 +49,7 @@ function App() {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/contact' exact component={Contact} />
-        <Route exact path='/services' render={props => <Services {...props} services={services} />} />
+        <Route exact path='/services' render={props => <Services {...props} services={services} loggedInStatus={loggedInStatus} />} />
         <Route exact path='/services/new' render={props => <NewService {...props} services={services} setServices={setServices} />} />
         <Route exact path='/services/:id/edit' render={props => <EditService {...props} services={services} setServices={setServices} />} />
         <Route exact path='/services/:id/delete' render={props => <DeleteService {...props} services={services} setServices={setServices} />} />
@@ -66,10 +66,10 @@ function App() {
               loggedInStatus={loggedInStatus} />
           )}
         />
-        <Route exact path={"/dashboard"}
+        {/* <Route exact path={"/services"}
           render={props => (
             <DashBoard {...props} loggedInStatus={loggedInStatus} />
-          )}
+          )} */}
         />
         <Route
           exact
@@ -78,7 +78,7 @@ function App() {
             (props) => {
               return loggedInStatus === "NOT_LOGGED_IN"
                 ? <AdminLogin handleLogin={handleLogin} />
-                : <Redirect to="/dashboard" />
+                : <Redirect to="/services" />
             }
           }
         />

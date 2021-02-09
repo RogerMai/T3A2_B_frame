@@ -6,7 +6,7 @@ import './EditService.css';
 import { Form, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function EditService({setServices, services, match, history, id }) {
+export default function EditService({setServices, services, match, history, id, loggedInStatus }) {
     // console.log(props)
     const [formInfo, setFormInfo] = useState({
         service_name: "",
@@ -57,6 +57,10 @@ export default function EditService({setServices, services, match, history, id }
         // console.log(editData)
         setFormInfo({...formInfo, [editData]: e.target.value}) // destructure formInfo and set the state with values from form 
     }
+
+    if (loggedInStatus === "NOT_LOGGED_IN") {
+        window.location.href = "/";
+          }
 
     return (
         <div className="editService-bg">

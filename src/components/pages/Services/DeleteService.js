@@ -41,6 +41,10 @@ export default function DeleteService(props) {
         // setServiceInfo(service) // sets the data for the form to allow for editing
     }, [])
 
+    if (props.loggedInStatus === "NOT_LOGGED_IN") {
+        window.location.href = "/";
+          }
+
 
     return serviceInfo.service_name ? (
         <div className="deleteService-bg">

@@ -1,10 +1,6 @@
 import React from 'react'
-import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
-import {Link, Route} from 'react-router-dom'
-import EditForm from './EditBooking'
-import { useState, useEffect } from 'react'
-import View from './ViewBooking'
+import { Link } from 'react-router-dom'
 
 // const clickDelete = (id) => {
 //     confirmAlert({

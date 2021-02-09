@@ -21,7 +21,7 @@ export default function EditService({setServices, services, match, history, id }
 
     const onSubmit = (e) => {
         let response = {...formInfo}
-        console.log(response) // Checking the response received when submitting
+        // console.log(response) // Checking the response received when submitting
 
         // fetches the API for Rails, formats data into JSON to post to database with checks on result status. Redirects back to the Services page once successfully completed.
         e.preventDefault()
